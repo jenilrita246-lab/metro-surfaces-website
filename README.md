@@ -120,6 +120,18 @@ gh api repos/jenilrita246-lab/metro-surfaces-website/commits/$(git rev-parse HEA
 
 ### The custom domain
 
-`metrosurfaces.in` is **not** served from this Vercel account — it still points at the
-old site. Pointing it here is a DNS change at the registrar, not just adding the domain
-in Vercel's project settings.
+`metrosurfaces.in` already points at Vercel — DNS is held at **GoDaddy**
+(`ns31/ns32.domaincontrol.com`), with the apex `A` on `216.198.79.1` and `www` CNAMEd to
+a Vercel target. It is bound to the **old** project in the same Vercel team.
+
+So the cutover is a **move between projects**, not a registrar change. Adding a domain
+that's already bound elsewhere returns `409 Conflict` — use the dashboard's move prompt,
+or:
+
+```bash
+npx vercel domains add metrosurfaces.in metro-surfaces-website --force
+```
+
+Afterwards check the project's Domains tab reads "Valid Configuration"; the `www` CNAME
+target is project-specific and can be reissued on a move. There are no MX records on the
+domain, so email is not at risk.
