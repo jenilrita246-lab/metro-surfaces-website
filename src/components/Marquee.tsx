@@ -19,10 +19,10 @@ export function Marquee({
         {track.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="flex shrink-0 items-center gap-8 px-8 font-display text-2xl font-light tracking-wide text-bone-soft sm:text-3xl"
+            className="flex shrink-0 items-center gap-8 px-8 font-display text-2xl font-light tracking-wide text-ink-soft sm:text-3xl"
           >
             {item}
-            <span className="inline-block h-1.5 w-1.5 rotate-45 bg-maroon-bright/70" />
+            <span className="inline-block h-1.5 w-1.5 rotate-45 bg-maroon-deep/70" />
           </span>
         ))}
       </div>

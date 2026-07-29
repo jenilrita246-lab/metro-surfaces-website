@@ -58,7 +58,7 @@ export function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-500",
           scrolled || open
-            ? "border-b border-line bg-ink/85 backdrop-blur-xl"
+            ? "border-b border-line bg-paper/85 backdrop-blur-xl"
             : "border-b border-transparent bg-transparent",
         )}
       >
@@ -66,7 +66,7 @@ export function Header() {
         <motion.div
           aria-hidden="true"
           style={{ scaleX: progress }}
-          className="absolute inset-x-0 top-0 h-px origin-left bg-gradient-to-r from-maroon via-maroon-bright to-maroon"
+          className="absolute inset-x-0 top-0 h-px origin-left bg-gradient-to-r from-maroon via-maroon-deep to-maroon"
         />
 
         <div
@@ -95,14 +95,14 @@ export function Header() {
                   href={item.href}
                   className={cn(
                     "relative py-2 text-sm font-light tracking-wide transition-colors duration-300",
-                    active ? "text-bone" : "text-bone-soft hover:text-bone",
+                    active ? "text-ink" : "text-ink-soft hover:text-ink",
                   )}
                 >
                   {item.label}
                   {active && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute -bottom-0.5 left-0 h-px w-full bg-maroon-bright"
+                      className="absolute -bottom-0.5 left-0 h-px w-full bg-maroon-deep"
                       transition={{ duration: 0.5, ease: EASE }}
                     />
                   )}
@@ -116,7 +116,7 @@ export function Header() {
               href={contact.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="group hidden items-center gap-2.5 border border-line-strong px-5 py-2.5 text-xs tracking-[0.2em] uppercase text-bone transition-colors duration-400 hover:border-maroon-bright hover:bg-maroon-bright/10 sm:inline-flex"
+              className="group hidden items-center gap-2.5 border border-line-strong px-5 py-2.5 text-xs tracking-[0.2em] uppercase text-ink transition-colors duration-400 hover:border-maroon hover:bg-maroon/8 sm:inline-flex"
             >
               Enquire
               <span className="transition-transform duration-400 group-hover:translate-x-1">
@@ -134,12 +134,12 @@ export function Header() {
               <motion.span
                 animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.4, ease: EASE }}
-                className="block h-px w-6 bg-bone"
+                className="block h-px w-6 bg-ink"
               />
               <motion.span
                 animate={open ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.4, ease: EASE }}
-                className="block h-px w-6 bg-bone"
+                className="block h-px w-6 bg-ink"
               />
             </button>
           </div>
@@ -154,7 +154,7 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="fixed inset-0 z-40 flex flex-col bg-ink-deep/98 pt-[92px] backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-paper-deep/98 pt-[92px] backdrop-blur-2xl lg:hidden"
           >
             <div className="bloom pointer-events-none absolute -top-24 right-0 h-96 w-96" />
 
@@ -173,7 +173,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-baseline gap-4 py-4 font-display text-4xl font-light text-bone transition-colors duration-300 hover:text-maroon-bright sm:text-5xl"
+                    className="flex items-baseline gap-4 py-4 font-display text-4xl font-light text-ink transition-colors duration-300 hover:text-maroon sm:text-5xl"
                   >
                     <span className="eyebrow text-[0.6rem]">
                       0{i + 1}
@@ -193,13 +193,13 @@ export function Header() {
               <p className="eyebrow mb-3">Direct</p>
               <a
                 href={contact.phoneHref}
-                className="block font-display text-2xl text-bone"
+                className="block font-display text-2xl text-ink"
               >
                 {contact.phone}
               </a>
               <a
                 href={contact.emailHref}
-                className="mt-1 block text-sm text-bone-soft"
+                className="mt-1 block text-sm text-ink-soft"
               >
                 {contact.email}
               </a>

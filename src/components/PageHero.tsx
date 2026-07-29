@@ -21,7 +21,7 @@ export function PageHero({
         <div className="relative max-w-4xl">
           <Reveal>
             <p className="eyebrow flex items-center gap-3">
-              <span className="h-px w-10 bg-maroon-bright" />
+              <span className="h-px w-10 bg-maroon-deep" />
               {eyebrow}
             </p>
           </Reveal>
@@ -29,13 +29,13 @@ export function PageHero({
           {/* No gradient-clip here: SplitWords nests each word in its own
               span, and background-clip:text on the wrapper would leave the
               children transparent with nothing painted behind them. */}
-          <h1 className="mt-7 font-display text-5xl leading-[1.02] font-light tracking-[-0.02em] text-balance text-bone sm:text-6xl lg:text-7xl">
+          <h1 className="mt-7 font-display text-5xl leading-[1.02] font-light tracking-[-0.02em] text-balance text-ink sm:text-6xl lg:text-7xl">
             <SplitWords text={title} />
           </h1>
 
           {lead && (
             <Reveal delay={0.2}>
-              <p className="mt-7 max-w-2xl text-base leading-relaxed text-bone-soft text-pretty lg:text-lg">
+              <p className="mt-7 max-w-2xl text-base leading-relaxed text-ink-soft text-pretty lg:text-lg">
                 {lead}
               </p>
             </Reveal>

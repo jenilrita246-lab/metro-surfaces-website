@@ -44,12 +44,12 @@ export function ContactBand() {
             {...(channel.external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
-            className="group relative flex h-full flex-col justify-between overflow-hidden bg-ink p-8 transition-colors duration-700 hover:bg-ink-card lg:p-10"
+            className="group relative flex h-full flex-col justify-between overflow-hidden bg-paper p-8 transition-colors duration-700 hover:bg-paper-raised lg:p-10"
           >
-            <span className="pointer-events-none absolute inset-x-0 top-0 h-px w-full origin-left scale-x-0 bg-maroon-bright transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+            <span className="pointer-events-none absolute inset-x-0 top-0 h-px w-full origin-left scale-x-0 bg-maroon-deep transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
 
             <div>
-              <span className="inline-flex h-12 w-12 items-center justify-center border border-line-strong text-bone-soft transition-colors duration-500 group-hover:border-maroon-bright group-hover:text-maroon-bright">
+              <span className="inline-flex h-12 w-12 items-center justify-center border border-line-strong text-ink-soft transition-colors duration-500 group-hover:border-maroon group-hover:text-maroon">
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
@@ -60,15 +60,15 @@ export function ContactBand() {
                 </svg>
               </span>
 
-              <h3 className="mt-7 font-display text-2xl font-light text-bone">
+              <h3 className="mt-7 font-display text-2xl font-light text-ink">
                 {channel.label}
               </h3>
-              <p className="mt-2 text-sm text-bone-dim text-pretty">
+              <p className="mt-2 text-sm text-ink-dim text-pretty">
                 {channel.note}
               </p>
             </div>
 
-            <p className="mt-10 flex items-center gap-3 text-sm break-all text-bone-soft transition-colors duration-500 group-hover:text-bone">
+            <p className="mt-10 flex items-center gap-3 text-sm break-all text-ink-soft transition-colors duration-500 group-hover:text-ink">
               {channel.value}
               <span className="shrink-0 transition-transform duration-500 group-hover:translate-x-1">
                 →

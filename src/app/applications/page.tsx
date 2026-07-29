@@ -28,7 +28,7 @@ export default function ApplicationsPage() {
       </section>
 
       {/* ---------------- Sectors ---------------- */}
-      <section className="border-t border-line bg-ink-raised py-24 lg:py-32">
+      <section className="border-t border-line bg-paper-sunk py-24 lg:py-32">
         <div className="shell">
           <SectionHeading
             index="02"
@@ -39,25 +39,28 @@ export default function ApplicationsPage() {
           <RevealGroup className="mt-14 grid gap-4 lg:grid-cols-3">
             {applicationSectors.map((sector) => (
               <RevealItem key={sector.title}>
-                <article className="group relative flex h-full min-h-[26rem] flex-col justify-end overflow-hidden border border-line p-8">
-                  <Image
-                    src={sector.image}
-                    alt={`${sector.title} — decorative surfaces by Metro Surfaces`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover opacity-30 grayscale transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-55 group-hover:grayscale-0"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-ink/40" />
+                {/* Photograph as a band, copy on solid paper beneath — text
+                    laid over these high-key interiors needed so much veiling
+                    that the image stopped reading at all */}
+                <article className="group flex h-full flex-col overflow-hidden border border-line bg-paper-raised transition-shadow duration-700 hover:shadow-card">
+                  <div className="relative h-52 shrink-0 overflow-hidden">
+                    <Image
+                      src={sector.image}
+                      alt={`${sector.title} — decorative surfaces by Metro Surfaces`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover grayscale-[0.5] transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0"
+                    />
+                    <span className="absolute top-5 left-5 font-display text-4xl font-light text-white drop-shadow-[0_1px_6px_rgba(28,25,24,0.55)]">
+                      {sector.index}
+                    </span>
+                  </div>
 
-                  <span className="absolute top-8 left-8 font-display text-4xl font-light text-bone/25 transition-colors duration-700 group-hover:text-maroon-bright">
-                    {sector.index}
-                  </span>
-
-                  <div className="relative">
-                    <h3 className="font-display text-3xl leading-tight font-light text-bone">
+                  <div className="flex flex-1 flex-col p-8">
+                    <h3 className="font-display text-3xl leading-tight font-light text-ink">
                       {sector.title}
                     </h3>
-                    <p className="mt-2 text-sm text-bone-dim">
+                    <p className="mt-2 text-sm text-ink-dim">
                       {sector.summary}
                     </p>
 
@@ -65,13 +68,19 @@ export default function ApplicationsPage() {
                       {sector.items.map((item) => (
                         <li
                           key={item}
-                          className="flex items-center gap-3 py-1.5 text-sm text-bone-soft"
+                          className="flex items-center gap-3 py-1.5 text-sm text-ink-soft"
                         >
-                          <span className="h-1 w-1 rotate-45 bg-maroon-bright" />
+                          <span className="h-1 w-1 rotate-45 bg-maroon" />
                           {item}
                         </li>
                       ))}
                     </ul>
+
+                    {/* Padding lives on the wrapper — on the rule itself the
+                        background would fill the padding box into a block */}
+                    <div className="mt-auto pt-7">
+                      <span className="block h-px w-10 bg-maroon transition-all duration-700 group-hover:w-20" />
+                    </div>
                   </div>
                 </article>
               </RevealItem>

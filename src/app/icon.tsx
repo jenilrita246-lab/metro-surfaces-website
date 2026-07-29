@@ -16,7 +16,7 @@ export default function Icon() {
           height: "100%",
           display: "flex",
           position: "relative",
-          background: "#0a0908",
+          background: "#faf7f3",
         }}
       >
         <div
@@ -26,7 +26,7 @@ export default function Icon() {
             top: 8,
             width: 26,
             height: 40,
-            background: "#b62a3b",
+            background: "#8b1a26",
           }}
         />
         <div
@@ -36,8 +36,8 @@ export default function Icon() {
             top: 18,
             width: 28,
             height: 40,
-            background: "#c9c6c2",
-            opacity: 0.82,
+            background: "#b0a9a0",
+            opacity: 0.85,
           }}
         />
       </div>

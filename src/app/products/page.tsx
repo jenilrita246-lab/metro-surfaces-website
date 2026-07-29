@@ -33,7 +33,7 @@ export default function ProductsPage() {
       </div>
 
       {/* ---------------- Specifications ---------------- */}
-      <section className="border-t border-line bg-ink-raised py-24 lg:py-32">
+      <section className="border-t border-line bg-paper-sunk py-24 lg:py-32">
         <div className="shell">
           <SectionHeading
             index="05"
@@ -45,8 +45,8 @@ export default function ProductsPage() {
           <RevealGroup className="mt-14 grid gap-px border border-line bg-line lg:grid-cols-2">
             {specifications.map((group) => (
               <RevealItem key={group.title}>
-                <div className="h-full bg-ink p-8 lg:p-10">
-                  <h3 className="font-display text-2xl font-light text-bone">
+                <div className="h-full bg-paper p-8 lg:p-10">
+                  <h3 className="font-display text-2xl font-light text-ink">
                     {group.title}
                   </h3>
                   <dl className="mt-7 space-y-0">
@@ -55,10 +55,10 @@ export default function ProductsPage() {
                         key={term}
                         className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line py-4 last:border-b-0"
                       >
-                        <dt className="text-xs tracking-[0.16em] uppercase text-bone-dim">
+                        <dt className="text-xs tracking-[0.16em] uppercase text-ink-dim">
                           {term}
                         </dt>
-                        <dd className="text-sm text-bone">{detail}</dd>
+                        <dd className="text-sm text-ink">{detail}</dd>
                       </div>
                     ))}
                   </dl>
@@ -68,7 +68,7 @@ export default function ProductsPage() {
           </RevealGroup>
 
           <Reveal delay={0.15}>
-            <p className="mt-8 text-sm text-bone-dim">
+            <p className="mt-8 text-sm text-ink-dim">
               Need something outside these ranges? Custom sizes and finishes are
               available on request — talk to us about the project.
             </p>

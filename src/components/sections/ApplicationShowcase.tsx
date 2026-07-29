@@ -28,18 +28,18 @@ export function ApplicationShowcase() {
               className={cn(
                 "relative px-5 py-4 text-sm font-light tracking-wide whitespace-nowrap transition-colors duration-400",
                 active === i
-                  ? "text-bone"
-                  : "text-bone-dim hover:text-bone-soft",
+                  ? "text-ink"
+                  : "text-ink-dim hover:text-ink-soft",
               )}
             >
-              <span className="mr-2.5 text-[0.7rem] text-maroon-bright">
+              <span className="mr-2.5 text-[0.7rem] text-maroon">
                 {item.index}
               </span>
               {item.name}
               {active === i && (
                 <motion.span
                   layoutId="showcase-tab"
-                  className="absolute inset-x-0 -bottom-px h-px bg-maroon-bright"
+                  className="absolute inset-x-0 -bottom-px h-px bg-maroon-deep"
                   transition={{ duration: 0.5, ease: EASE }}
                 />
               )}
@@ -66,17 +66,17 @@ export function ApplicationShowcase() {
               sizes="(max-width: 1024px) 100vw, 58vw"
               className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-paper from-40% via-paper/25 to-transparent" />
 
             <div className="absolute inset-x-0 bottom-0 p-7 lg:p-9">
               <p className="eyebrow mb-3">{product.category}</p>
-              <h3 className="font-display text-3xl leading-tight font-light text-bone lg:text-4xl">
+              <h3 className="font-display text-3xl leading-tight font-light text-ink lg:text-4xl">
                 {product.name}
               </h3>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-bone-soft text-pretty">
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-soft text-pretty">
                 {product.blurb}
               </p>
-              <p className="mt-5 inline-block border border-line-strong px-3 py-1.5 text-[0.7rem] tracking-[0.16em] uppercase text-bone-soft">
+              <p className="mt-5 inline-block border border-line-strong px-3 py-1.5 text-[0.7rem] tracking-[0.16em] uppercase text-ink-soft">
                 8 × 4 feet available
               </p>
             </div>
@@ -98,12 +98,12 @@ export function ApplicationShowcase() {
                   alt={`${product.name} used for ${application.title} — Metro Surfaces`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover opacity-80 transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"
+                  className="object-cover opacity-95 transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/25 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-paper from-28% via-paper/20 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 p-5">
-                  <span className="h-px w-6 bg-maroon-bright transition-all duration-700 group-hover:w-10" />
-                  <p className="text-sm font-light text-bone">
+                  <span className="h-px w-6 bg-maroon-deep transition-all duration-700 group-hover:w-10" />
+                  <p className="text-sm font-light text-ink">
                     {application.title}
                   </p>
                 </div>

@@ -25,7 +25,7 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <section className="border-y border-line bg-ink-raised py-7">
+      <section className="border-y border-line bg-paper-sunk py-7">
         <Marquee items={MARQUEE} />
       </section>
 
@@ -63,7 +63,7 @@ export default function HomePage() {
         <Reveal delay={0.1} className="mt-12">
           <Link
             href="/products"
-            className="group inline-flex items-center gap-3 border border-line-strong px-7 py-4 text-xs tracking-[0.2em] uppercase text-bone transition-colors duration-500 hover:border-maroon-bright hover:bg-maroon-bright/10"
+            className="group inline-flex items-center gap-3 border border-line-strong px-7 py-4 text-xs tracking-[0.2em] uppercase text-ink transition-colors duration-500 hover:border-maroon hover:bg-maroon/8"
           >
             Full specifications
             <span className="transition-transform duration-500 group-hover:translate-x-1">
@@ -74,7 +74,7 @@ export default function HomePage() {
       </section>
 
       {/* ---------------- Applications ---------------- */}
-      <section className="border-t border-line bg-ink-raised py-24 lg:py-36">
+      <section className="border-t border-line bg-paper-sunk py-24 lg:py-36">
         <div className="shell">
           <SectionHeading
             index="03"

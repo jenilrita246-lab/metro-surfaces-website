@@ -1,43 +1,46 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   METRO SURFACES — "Dark Architectural Luxury"
-   Palette derived from the brand mark: deep maroon, warm bone,
-   ash grey panels, near-black canvas.
+   METRO SURFACES — "Warm Editorial Minimal"
+   Bone paper canvas, warm near-black text, maroon accent from the
+   brand mark. Ash grey carries over from the logo's panel planes.
 ------------------------------------------------------------------- */
 
 @theme {
-  /* Canvas */
-  --color-ink: #0a0908;
-  --color-ink-raised: #121011;
-  --color-ink-card: #171415;
-  --color-ink-deep: #050404;
+  /* Canvas — paper tones, lightest to deepest */
+  --color-paper: #faf7f3;
+  --color-paper-raised: #ffffff;
+  --color-paper-sunk: #f1ece5;
+  --color-paper-deep: #ebe4da;
 
-  /* Type */
-  --color-bone: #ede8e1;
-  --color-bone-soft: #b4ada5;
-  --color-bone-dim: #78716a;
+  /* Type — warm near-black through to muted grey */
+  --color-ink: #1c1918;
+  --color-ink-soft: #57504a;
+  --color-ink-dim: #857d75;
 
   /* Brand */
   --color-maroon: #8b1a26;
-  --color-maroon-bright: #b62a3b;
-  --color-maroon-deep: #5c1119;
-  --color-ash: #c9c6c2;
+  --color-maroon-deep: #6b1420;
+  --color-maroon-tint: #f4e7e8;
+  --color-ash: #bdb7af;
 
   /* Lines */
-  --color-line: rgba(237, 232, 225, 0.09);
-  --color-line-strong: rgba(237, 232, 225, 0.18);
+  --color-line: rgba(28, 25, 24, 0.1);
+  --color-line-strong: rgba(28, 25, 24, 0.2);
 
   /* Fonts — bound in layout.tsx via next/font */
   --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Elevation — light themes need shadow where dark used glow */
+  --shadow-card: 0 1px 2px rgba(28, 25, 24, 0.04), 0 8px 24px -12px rgba(28, 25, 24, 0.14);
+  --shadow-lift: 0 2px 4px rgba(28, 25, 24, 0.05), 0 20px 46px -18px rgba(28, 25, 24, 0.22);
 
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
 
   --animate-marquee: marquee 42s linear infinite;
-  --animate-shimmer: shimmer 3.5s var(--ease-in-out-quint) infinite;
   --animate-float: float 7s ease-in-out infinite;
   --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
   --animate-scroll-hint: scroll-hint 2.2s var(--ease-in-out-quint) infinite;
@@ -49,17 +52,6 @@
   }
   to {
     transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@keyframes shimmer {
-  0%,
-  100% {
-    transform: translateX(-120%);
-  }
-  55%,
-  100% {
-    transform: translateX(120%);
   }
 }
 
@@ -76,10 +68,10 @@
 @keyframes pulse-glow {
   0%,
   100% {
-    opacity: 0.35;
+    opacity: 0.5;
   }
   50% {
-    opacity: 0.75;
+    opacity: 0.9;
   }
 }
 
@@ -125,8 +117,8 @@
   }
 
   body {
-    background-color: var(--color-ink);
-    color: var(--color-bone);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     font-weight: 300;
     line-height: 1.65;
@@ -137,11 +129,11 @@
 
   ::selection {
     background-color: var(--color-maroon);
-    color: var(--color-bone);
+    color: #ffffff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-maroon-bright);
+    outline: 2px solid var(--color-maroon);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -150,11 +142,11 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-ink-deep);
+    background: var(--color-paper-sunk);
   }
   ::-webkit-scrollbar-thumb {
-    background: #2a2526;
-    border: 3px solid var(--color-ink-deep);
+    background: #cec7bd;
+    border: 3px solid var(--color-paper-sunk);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -163,14 +155,15 @@
 }
 
 @layer components {
-  /* Filmic grain — sits over the whole page for a material, non-flat feel */
+  /* Paper tooth — a whisper of texture so large bone areas aren't dead flat.
+     Much lighter than the dark theme's grain, which would read as dirt here. */
   .grain::after {
     content: "";
     position: fixed;
     inset: -50%;
     z-index: 60;
     pointer-events: none;
-    opacity: 0.055;
+    opacity: 0.022;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
@@ -180,7 +173,7 @@
     font-weight: 400;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-bone-dim);
+    color: var(--color-ink-dim);
   }
 
   .rule {
@@ -195,17 +188,17 @@
     );
   }
 
-  /* Maroon radial bloom used behind hero + section anchors */
+  /* Soft maroon wash — on paper this is a tint, not a glow */
   .bloom {
     position: absolute;
     pointer-events: none;
     background: radial-gradient(
       circle at center,
-      rgba(139, 26, 38, 0.42) 0%,
-      rgba(139, 26, 38, 0.13) 38%,
-      transparent 70%
+      rgba(139, 26, 38, 0.1) 0%,
+      rgba(139, 26, 38, 0.04) 40%,
+      transparent 72%
     );
-    filter: blur(24px);
+    filter: blur(28px);
   }
 
   .shell {
@@ -222,8 +215,8 @@
 
   .link-underline {
     background-image: linear-gradient(
-      var(--color-maroon-bright),
-      var(--color-maroon-bright)
+      var(--color-maroon),
+      var(--color-maroon)
     );
     background-size: 0% 1px;
     background-position: 0 100%;
@@ -244,8 +237,8 @@
   }
 
   /* Gradient text used sparingly on display headings */
-  .text-gradient-bone {
-    background: linear-gradient(160deg, #fffdfa 8%, #ede8e1 42%, #8d857c 100%);
+  .text-gradient-ink {
+    background: linear-gradient(160deg, #100e0d 8%, #1c1918 45%, #5d554e 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

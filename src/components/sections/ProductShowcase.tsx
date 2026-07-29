@@ -45,24 +45,26 @@ export function ProductShowcase() {
                 className={cn(
                   "object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
                   isActive
-                    ? "scale-105 opacity-70 grayscale-0"
-                    : "scale-100 opacity-40 grayscale",
+                    ? "scale-105 grayscale-0"
+                    : "scale-100 grayscale-[0.55]",
                 )}
               />
 
               <div
                 className={cn(
+                  // Caption band only — veiling the whole image would bleach
+                  // it out, since these photographs are already high-key
                   "absolute inset-0 transition-opacity duration-700",
                   isActive
-                    ? "bg-gradient-to-t from-ink via-ink/55 to-transparent"
-                    : "bg-gradient-to-t from-ink via-ink/78 to-ink/40",
+                    ? "bg-gradient-to-t from-paper from-46% via-paper/25 to-transparent"
+                    : "bg-gradient-to-t from-paper from-46% via-paper/30 to-transparent",
                 )}
               />
 
               <span
                 className={cn(
                   "absolute inset-x-0 top-0 h-px transition-opacity duration-700",
-                  isActive ? "bg-maroon-bright opacity-100" : "opacity-0",
+                  isActive ? "bg-maroon-deep opacity-100" : "opacity-0",
                 )}
               />
 
@@ -70,7 +72,7 @@ export function ProductShowcase() {
                 <span
                   className={cn(
                     "font-display text-5xl font-light transition-colors duration-700",
-                    isActive ? "text-maroon-bright" : "text-bone/25",
+                    isActive ? "text-maroon" : "text-ink/45",
                   )}
                 >
                   {product.index}
@@ -78,7 +80,7 @@ export function ProductShowcase() {
 
                 <div>
                   <p className="eyebrow mb-3">{product.category}</p>
-                  <h3 className="font-display text-3xl leading-tight font-light text-bone">
+                  <h3 className="font-display text-3xl leading-tight font-light text-ink">
                     {product.name}
                   </h3>
 
@@ -90,20 +92,20 @@ export function ProductShowcase() {
                     transition={{ duration: 0.7, ease: EASE }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-4 max-w-sm text-sm leading-relaxed text-bone-soft text-pretty">
+                    <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-soft text-pretty">
                       {product.blurb}
                     </p>
                     <ul className="mt-5 flex flex-wrap gap-2">
                       {product.features.map((feature) => (
                         <li
                           key={feature}
-                          className="border border-line-strong px-3 py-1.5 text-[0.7rem] tracking-wide text-bone-soft"
+                          className="border border-line-strong px-3 py-1.5 text-[0.7rem] tracking-wide text-ink-soft"
                         >
                           {feature}
                         </li>
                       ))}
                     </ul>
-                    <span className="mt-6 inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-bone">
+                    <span className="mt-6 inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-ink">
                       View details
                       <span className="transition-transform duration-500 group-hover:translate-x-1">
                         →
@@ -130,18 +132,18 @@ export function ProductShowcase() {
                 alt={`${product.name} — ${product.category} surface by Metro Surfaces`}
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"
-                className="object-cover opacity-55 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                className="object-cover opacity-95 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
-              <span className="absolute top-6 right-6 font-display text-4xl font-light text-bone/25">
+              <div className="absolute inset-0 bg-gradient-to-t from-paper via-paper/80 to-paper/25" />
+              <span className="absolute top-6 right-6 font-display text-4xl font-light text-ink/25">
                 {product.index}
               </span>
               <div className="relative">
                 <p className="eyebrow mb-2">{product.category}</p>
-                <h3 className="font-display text-2xl font-light text-bone">
+                <h3 className="font-display text-2xl font-light text-ink">
                   {product.name}
                 </h3>
-                <p className="mt-2 text-sm text-bone-soft text-pretty">
+                <p className="mt-2 text-sm text-ink-soft text-pretty">
                   {product.blurb}
                 </p>
               </div>

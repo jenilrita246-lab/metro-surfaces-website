@@ -16,7 +16,7 @@ const PROJECT_TYPES = [
 ];
 
 const field =
-  "w-full border border-line bg-ink-card px-4 py-3.5 text-sm text-bone placeholder:text-bone-dim transition-colors duration-300 focus:border-maroon-bright focus:outline-none";
+  "w-full border border-line bg-paper-raised px-4 py-3.5 text-sm text-ink placeholder:text-ink-dim transition-colors duration-300 focus:border-maroon focus:outline-none";
 
 /**
  * No backend required: the form composes a structured enquiry and hands it
@@ -57,13 +57,13 @@ export function EnquiryForm() {
   return (
     <form
       onSubmit={(event) => event.preventDefault()}
-      className="border border-line bg-ink p-8 lg:p-10"
+      className="border border-line bg-paper p-8 lg:p-10"
     >
       <p className="eyebrow">Project enquiry</p>
-      <h3 className="mt-4 font-display text-3xl leading-tight font-light text-bone">
+      <h3 className="mt-4 font-display text-3xl leading-tight font-light text-ink">
         Tell us about the project.
       </h3>
-      <p className="mt-3 text-sm text-bone-dim text-pretty">
+      <p className="mt-3 text-sm text-ink-dim text-pretty">
         Fill this in and send it straight to our WhatsApp or email — whichever
         you prefer. Nothing is stored on this website.
       </p>
@@ -144,8 +144,8 @@ export function EnquiryForm() {
           className={cn(
             "group inline-flex items-center gap-3 px-7 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-500",
             incomplete
-              ? "pointer-events-none border border-line text-bone-dim"
-              : "bg-maroon text-bone hover:bg-maroon-bright",
+              ? "pointer-events-none border border-line text-ink-dim"
+              : "bg-maroon text-white hover:bg-maroon-deep",
           )}
         >
           Send via WhatsApp
@@ -160,8 +160,8 @@ export function EnquiryForm() {
           className={cn(
             "group inline-flex items-center gap-3 border px-7 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-500",
             incomplete
-              ? "pointer-events-none border-line text-bone-dim"
-              : "border-line-strong text-bone hover:border-bone-soft",
+              ? "pointer-events-none border-line text-ink-dim"
+              : "border-line-strong text-ink hover:border-ink-dim",
           )}
         >
           Send via Email
@@ -172,7 +172,7 @@ export function EnquiryForm() {
       </div>
 
       {incomplete && (
-        <p className="mt-4 text-xs text-bone-dim">
+        <p className="mt-4 text-xs text-ink-dim">
           Add your name and a short description to enable sending.
         </p>
       )}

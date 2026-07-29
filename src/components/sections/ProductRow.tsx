@@ -49,8 +49,10 @@ export function ProductRow({
               className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-ink/70 via-transparent to-transparent" />
-          <span className="absolute top-6 left-6 font-display text-5xl font-light text-bone/30">
+          {/* Paper wash under the index numeral so it stays legible on any
+              photograph — the numeral sits top-left */}
+          <div className="absolute inset-0 bg-gradient-to-br from-paper/85 via-transparent to-transparent" />
+          <span className="absolute top-6 left-6 font-display text-5xl font-light text-ink/35">
             {product.index}
           </span>
         </div>
@@ -59,10 +61,10 @@ export function ProductRow({
         <div>
           <Reveal>
             <p className="eyebrow">{product.category}</p>
-            <h2 className="mt-5 font-display text-4xl leading-tight font-light text-bone lg:text-5xl">
+            <h2 className="mt-5 font-display text-4xl leading-tight font-light text-ink lg:text-5xl">
               {product.name}
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-bone-soft text-pretty">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft text-pretty">
               {product.description}
             </p>
           </Reveal>
@@ -71,9 +73,9 @@ export function ProductRow({
           <RevealGroup className="grid gap-px border border-line bg-line sm:grid-cols-2">
             {product.features.map((feature) => (
               <RevealItem key={feature}>
-                <div className="group flex h-full items-center gap-3 bg-ink px-5 py-4 transition-colors duration-500 hover:bg-ink-card">
-                  <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-maroon-bright transition-transform duration-500 group-hover:rotate-[135deg]" />
-                  <span className="text-sm text-bone-soft">{feature}</span>
+                <div className="group flex h-full items-center gap-3 bg-paper px-5 py-4 transition-colors duration-500 hover:bg-paper-raised">
+                  <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-maroon-deep transition-transform duration-500 group-hover:rotate-[135deg]" />
+                  <span className="text-sm text-ink-soft">{feature}</span>
                 </div>
               </RevealItem>
             ))}
@@ -84,7 +86,7 @@ export function ProductRow({
               href={contact.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-maroon px-7 py-3.5 text-xs tracking-[0.2em] uppercase text-bone transition-colors duration-500 hover:bg-maroon-bright"
+              className="group inline-flex items-center gap-3 bg-maroon px-7 py-3.5 text-xs tracking-[0.2em] uppercase text-white transition-colors duration-500 hover:bg-maroon-deep"
             >
               Request samples
               <span className="transition-transform duration-500 group-hover:translate-x-1">
@@ -93,7 +95,7 @@ export function ProductRow({
             </a>
             <a
               href="/applications"
-              className="group inline-flex items-center gap-3 border border-line-strong px-7 py-3.5 text-xs tracking-[0.2em] uppercase text-bone-soft transition-colors duration-500 hover:border-bone-soft hover:text-bone"
+              className="group inline-flex items-center gap-3 border border-line-strong px-7 py-3.5 text-xs tracking-[0.2em] uppercase text-ink-soft transition-colors duration-500 hover:border-ink-dim hover:text-ink"
             >
               View applications
               <span className="transition-transform duration-500 group-hover:translate-x-1">

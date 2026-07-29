@@ -42,13 +42,13 @@ export default function PhilosophyPage() {
 
           <Reveal delay={0.15}>
             <div className="mx-auto mt-12 max-w-3xl space-y-7 text-center">
-              <p className="text-lg leading-relaxed text-bone-soft text-pretty">
+              <p className="text-lg leading-relaxed text-ink-soft text-pretty">
                 Enabling architects and designers to create extraordinary spaces
                 through premium materials, exceptional service, and unwavering
                 reliability.
               </p>
 
-              <blockquote className="border-t border-line pt-10 font-display text-2xl leading-relaxed font-light text-balance text-bone italic lg:text-3xl">
+              <blockquote className="border-t border-line pt-10 font-display text-2xl leading-relaxed font-light text-balance text-ink italic lg:text-3xl">
                 “We believe that every surface tells a story, and we&apos;re here
                 to help you write yours with elegance, durability, and
                 distinction.”

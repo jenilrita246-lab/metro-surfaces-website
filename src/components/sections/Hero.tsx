@@ -1,167 +1,259 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useState } from "react";
 
 import { Magnetic } from "@/components/motion/Magnetic";
-import { SplitWords } from "@/components/motion/SplitWords";
-import { GridLines } from "@/components/SectionHeading";
+import { cn } from "@/lib/cn";
+import { products } from "@/lib/products";
 import { contact } from "@/lib/site";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-const LINES = ["Acrycore", "Laminates", "Louvers", "Cane Wallpaper"];
 
+/**
+ * Split editorial hero: type on paper at left, a vertical stack of material
+ * swatches at right. The two halves share one `active` index, so hovering a
+ * product row opens its swatch and hovering a swatch marks its row — the
+ * page introduces the catalogue instead of a generic interior photo.
+ */
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  // Background drifts slower than the copy — classic depth parallax.
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.22]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "38%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  const [active, setActive] = useState(0);
 
   return (
-    <section
-      ref={ref}
-      className="relative flex min-h-[100svh] items-center overflow-hidden"
-    >
-      <motion.div
-        style={{ y: imageY, scale: imageScale }}
-        className="absolute inset-0 -z-20"
-      >
-        <Image
-          src="/hero-ambient.webp"
-          alt="Contemporary interior finished in Metro Surfaces decorative panels and Acrycore sheets"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </motion.div>
+    <section className="relative overflow-hidden pt-[116px] pb-16 lg:pt-[150px] lg:pb-24">
+      <div className="bloom pointer-events-none absolute -top-32 right-0 h-[22rem] w-[26rem] lg:h-[34rem] lg:w-[40rem]" />
 
-      {/* Tonal wash — dark enough on the left for type, open on the right so
-          the material in the photograph still reads */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/75 via-ink/45 to-ink" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/60 to-ink/10" />
+      <div className="shell relative">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* ---------------- Left: editorial column ----------------
+              min-w-0: grid items default to min-width:auto, which lets a
+              wide child force the whole column past the viewport. */}
+          <div className="min-w-0 lg:col-span-6 xl:col-span-7">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+              className="eyebrow flex items-center gap-3"
+            >
+              <span className="h-px w-10 bg-maroon" />
+              Premium Decorative Surfaces
+            </motion.p>
 
-      {/* Sized down on small screens — at 46rem the bloom is wider than a
-          phone viewport and washes the whole hero red */}
-      <div className="bloom pointer-events-none absolute -top-1/4 -right-1/4 -z-10 h-[24rem] w-[24rem] animate-[pulse-glow] sm:h-[36rem] sm:w-[36rem] lg:h-[46rem] lg:w-[46rem]" />
+            <h1 className="mt-7 font-display text-[3.25rem] leading-[0.95] font-light tracking-[-0.02em] sm:text-7xl xl:text-[5.5rem]">
+              <span className="block overflow-hidden">
+                <motion.span
+                  initial={{ y: "110%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ duration: 1.05, delay: 0.18, ease: EASE }}
+                  className="block text-gradient-ink"
+                >
+                  Beautiful Spaces,
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-2">
+                <motion.span
+                  initial={{ y: "110%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ duration: 1.05, delay: 0.3, ease: EASE }}
+                  className="block text-maroon italic"
+                >
+                  Beautiful Life
+                </motion.span>
+              </span>
+            </h1>
 
-      <div className="shell relative w-full">
-        <GridLines className="opacity-60" />
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.5, ease: EASE }}
+              className="mt-7 max-w-lg text-base leading-relaxed text-ink-soft text-pretty"
+            >
+              Four specialist surface lines for architects and interior
+              designers who specify materials that have to hold up — visually
+              and physically.
+            </motion.p>
 
-        <motion.div
-          style={{ y: contentY, opacity: contentOpacity }}
-          className="relative max-w-4xl pt-32 pb-28"
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
-            className="eyebrow flex items-center gap-3"
-          >
-            <span className="h-px w-10 bg-maroon-bright" />
-            Premium Decorative Surfaces
-          </motion.p>
+            {/* Product index — the left-hand mirror of the swatch stack */}
+            <motion.ul
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.62 }}
+              className="mt-10 max-w-md border-t border-line"
+            >
+              {products.map((product, i) => (
+                <li key={product.slug}>
+                  <Link
+                    href={`/products#${product.slug}`}
+                    onMouseEnter={() => setActive(i)}
+                    onFocus={() => setActive(i)}
+                    className="group flex items-baseline gap-4 border-b border-line py-3 transition-colors duration-500"
+                  >
+                    <span
+                      className={cn(
+                        "text-[0.7rem] tracking-[0.2em] transition-colors duration-500",
+                        active === i ? "text-maroon" : "text-ink-dim",
+                      )}
+                    >
+                      {product.index}
+                    </span>
+                    <span
+                      className={cn(
+                        "font-display text-xl font-light transition-all duration-500 lg:text-2xl",
+                        active === i
+                          ? "translate-x-1 text-ink"
+                          : "text-ink-soft",
+                      )}
+                    >
+                      {product.name}
+                    </span>
+                    <span
+                      className={cn(
+                        "ml-auto h-px transition-all duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                        active === i ? "w-10 bg-maroon" : "w-4 bg-line-strong",
+                      )}
+                    />
+                  </Link>
+                </li>
+              ))}
+            </motion.ul>
 
-          <h1 className="mt-8 font-display text-[3.25rem] leading-[0.95] font-light tracking-[-0.02em] sm:text-7xl lg:text-[6.5rem]">
-            <span className="block overflow-hidden">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: "0%" }}
-                transition={{ duration: 1.1, delay: 0.25, ease: EASE }}
-                className="block text-gradient-bone"
-              >
-                Beautiful Spaces,
-              </motion.span>
-            </span>
-            <span className="block overflow-hidden pb-2">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: "0%" }}
-                transition={{ duration: 1.1, delay: 0.38, ease: EASE }}
-                className="block italic text-maroon-bright"
-              >
-                Beautiful Life
-              </motion.span>
-            </span>
-          </h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.62, ease: EASE }}
-            className="mt-10 max-w-xl"
-          >
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-              {LINES.map((line, i) => (
-                <span key={line} className="flex items-center gap-3">
-                  <span className="text-sm font-light tracking-wide text-bone-soft">
-                    {line}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.76, ease: EASE }}
+              className="mt-10 flex flex-wrap items-center gap-5"
+            >
+              <Magnetic>
+                <Link
+                  href="/products"
+                  className="group relative inline-flex items-center gap-3 overflow-hidden bg-maroon px-8 py-4 text-xs tracking-[0.22em] uppercase text-white"
+                >
+                  <span className="absolute inset-0 -translate-x-full bg-maroon-deep transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0" />
+                  <span className="relative">Explore Surfaces</span>
+                  <span className="relative transition-transform duration-500 group-hover:translate-x-1">
+                    →
                   </span>
-                  {i < LINES.length - 1 && (
-                    <span className="h-3 w-px bg-line-strong" />
+                </Link>
+              </Magnetic>
+
+              <a
+                href={contact.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline py-4 text-xs tracking-[0.22em] uppercase text-ink-soft transition-colors duration-300 hover:text-ink"
+              >
+                Request samples
+              </a>
+            </motion.div>
+          </div>
+
+          {/* ---------------- Right: swatch stack ---------------- */}
+          <div className="min-w-0 lg:col-span-6 xl:col-span-5">
+            {/* 2×2 on small screens — four tiles side by side leaves each too
+                narrow for its label. Vertical accordion from lg up. */}
+            <div className="grid h-[26rem] grid-cols-2 gap-1.5 sm:h-[30rem] lg:flex lg:h-[34rem] lg:flex-col xl:h-[36rem]">
+              {products.map((product, i) => (
+                <motion.div
+                  key={product.slug}
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.9,
+                    delay: 0.28 + i * 0.09,
+                    ease: EASE,
+                  }}
+                  onMouseEnter={() => setActive(i)}
+                  className={cn(
+                    "min-h-0 min-w-0 transition-[flex-grow] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    active === i ? "grow-[2.4]" : "grow",
                   )}
-                </span>
+                  style={{ flexBasis: 0 }}
+                >
+                  <Link
+                    href={`/products#${product.slug}`}
+                    onFocus={() => setActive(i)}
+                    aria-label={`${product.name} — ${product.category}`}
+                    className="group relative flex h-full w-full items-end overflow-hidden border border-line"
+                  >
+                    <Image
+                      src={product.image}
+                      alt={`${product.name} — ${product.category} surface supplied by Metro Surfaces`}
+                      fill
+                      priority={i === 0}
+                      sizes="(max-width: 1024px) 50vw, 34vw"
+                      className={cn(
+                        "object-cover transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                        active === i
+                          ? "scale-105 grayscale-0"
+                          : "scale-100 grayscale-[0.7]",
+                      )}
+                    />
+
+                    <div
+                      className={cn(
+                        "absolute inset-0 transition-opacity duration-700",
+                        // Solid paper base under the caption, then clearing
+                        // fast so the material itself still reads
+                        active === i
+                          ? "bg-gradient-to-t from-paper from-30% via-paper/25 to-transparent"
+                          : "bg-gradient-to-t from-paper from-42% via-paper/40 to-transparent",
+                      )}
+                    />
+
+                    <span
+                      className={cn(
+                        "absolute inset-x-0 top-0 h-px origin-left transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                        active === i
+                          ? "scale-x-100 bg-maroon"
+                          : "scale-x-0 bg-maroon",
+                      )}
+                    />
+
+                    <div className="relative w-full p-4 lg:p-5">
+                      <p className="text-[0.6rem] tracking-[0.24em] text-maroon uppercase">
+                        {product.index}
+                      </p>
+                      <p className="mt-1.5 font-display text-lg leading-tight font-light text-ink lg:text-xl">
+                        {product.name}
+                      </p>
+
+                      {/* Blurb only on the open swatch, and only where there's
+                          room for it — the collapsed rail is too narrow */}
+                      <motion.div
+                        animate={{
+                          height: active === i ? "auto" : 0,
+                          opacity: active === i ? 1 : 0,
+                        }}
+                        transition={{ duration: 0.6, ease: EASE }}
+                        className="hidden overflow-hidden lg:block"
+                      >
+                        <p className="mt-2 max-w-xs text-sm leading-relaxed text-ink-soft text-pretty">
+                          {product.blurb}
+                        </p>
+                      </motion.div>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
-            <p className="mt-4 text-base leading-relaxed text-bone-dim text-pretty">
-              For discerning architects and interior designers who specify
-              materials that have to hold up — visually and physically.
-            </p>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.78, ease: EASE }}
-            className="mt-11 flex flex-wrap items-center gap-4"
-          >
-            <Magnetic>
-              <Link
-                href="/products"
-                className="group relative inline-flex items-center gap-3 overflow-hidden bg-maroon px-8 py-4 text-xs tracking-[0.22em] uppercase text-bone"
-              >
-                <span className="absolute inset-0 -translate-x-full bg-maroon-bright transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0" />
-                <span className="relative">Explore Surfaces</span>
-                <span className="relative transition-transform duration-500 group-hover:translate-x-1">
-                  →
-                </span>
-              </Link>
-            </Magnetic>
-
-            <a
-              href={contact.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline py-4 text-xs tracking-[0.22em] uppercase text-bone-soft transition-colors duration-300 hover:text-bone"
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] tracking-[0.16em] text-ink-dim uppercase"
             >
-              Request samples
-            </a>
-          </motion.div>
-        </motion.div>
+              <span>8 × 4 ft standard</span>
+              <span className="h-2.5 w-px bg-line-strong" />
+              <span>UV resistant</span>
+              <span className="h-2.5 w-px bg-line-strong" />
+              <span>ISO certified</span>
+            </motion.p>
+          </div>
+        </div>
       </div>
-
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        style={{ opacity: contentOpacity }}
-        className="absolute inset-x-0 bottom-8 flex flex-col items-center gap-3"
-      >
-        <span className="eyebrow text-[0.6rem]">Scroll</span>
-        <span className="relative h-12 w-px overflow-hidden bg-line-strong">
-          <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-hint] bg-maroon-bright" />
-        </span>
-      </motion.div>
     </section>
   );
 }

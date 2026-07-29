@@ -106,16 +106,16 @@ export default function PrivacyPolicyPage() {
           {sections.map((section, i) => (
             <Reveal key={section.title} className="border-b border-line py-10 first:pt-0">
               <div className="flex gap-6">
-                <span className="hidden shrink-0 font-display text-2xl font-light text-bone/20 sm:block">
+                <span className="hidden shrink-0 font-display text-2xl font-light text-ink/20 sm:block">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h2 className="font-display text-2xl leading-tight font-light text-bone lg:text-3xl">
+                  <h2 className="font-display text-2xl leading-tight font-light text-ink lg:text-3xl">
                     {section.title}
                   </h2>
 
                   {section.intro && (
-                    <p className="mt-4 text-sm leading-relaxed text-bone-soft text-pretty">
+                    <p className="mt-4 text-sm leading-relaxed text-ink-soft text-pretty">
                       {section.intro}
                     </p>
                   )}
@@ -125,9 +125,9 @@ export default function PrivacyPolicyPage() {
                       {section.items.map((item) => (
                         <li
                           key={item}
-                          className="flex items-start gap-3 text-sm text-bone-soft"
+                          className="flex items-start gap-3 text-sm text-ink-soft"
                         >
-                          <span className="mt-[0.55em] h-1 w-1 shrink-0 rotate-45 bg-maroon-bright" />
+                          <span className="mt-[0.55em] h-1 w-1 shrink-0 rotate-45 bg-maroon-deep" />
                           {item}
                         </li>
                       ))}
@@ -135,7 +135,7 @@ export default function PrivacyPolicyPage() {
                   )}
 
                   {section.body && (
-                    <p className="mt-5 text-sm leading-relaxed text-bone-soft text-pretty">
+                    <p className="mt-5 text-sm leading-relaxed text-ink-soft text-pretty">
                       {section.body}
                     </p>
                   )}
@@ -146,34 +146,34 @@ export default function PrivacyPolicyPage() {
 
           <Reveal className="py-10">
             <div className="flex gap-6">
-              <span className="hidden shrink-0 font-display text-2xl font-light text-bone/20 sm:block">
+              <span className="hidden shrink-0 font-display text-2xl font-light text-ink/20 sm:block">
                 {String(sections.length + 1).padStart(2, "0")}
               </span>
               <div>
-                <h2 className="font-display text-2xl leading-tight font-light text-bone lg:text-3xl">
+                <h2 className="font-display text-2xl leading-tight font-light text-ink lg:text-3xl">
                   Contact Us
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-bone-soft text-pretty">
+                <p className="mt-4 text-sm leading-relaxed text-ink-soft text-pretty">
                   If you have any questions about this Privacy Policy or our
                   data practices, please contact us:
                 </p>
 
                 <dl className="mt-6 space-y-4">
                   <div>
-                    <dt className="text-xs tracking-[0.16em] uppercase text-bone-dim">
+                    <dt className="text-xs tracking-[0.16em] uppercase text-ink-dim">
                       Email
                     </dt>
                     <dd className="mt-1">
                       <a
                         href={contact.emailHref}
-                        className="link-underline break-all text-bone"
+                        className="link-underline break-all text-ink"
                       >
                         {contact.email}
                       </a>
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-xs tracking-[0.16em] uppercase text-bone-dim">
+                    <dt className="text-xs tracking-[0.16em] uppercase text-ink-dim">
                       WhatsApp
                     </dt>
                     <dd className="mt-1">
@@ -181,17 +181,17 @@ export default function PrivacyPolicyPage() {
                         href={contact.whatsapp}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="link-underline text-bone"
+                        className="link-underline text-ink"
                       >
                         {contact.phone}
                       </a>
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-xs tracking-[0.16em] uppercase text-bone-dim">
+                    <dt className="text-xs tracking-[0.16em] uppercase text-ink-dim">
                       Business hours
                     </dt>
-                    <dd className="mt-1 text-bone">
+                    <dd className="mt-1 text-ink">
                       {contact.hours.days}, {contact.hours.time}
                     </dd>
                   </div>

@@ -19,8 +19,8 @@ export function LogoMark({ className }: { className?: string }) {
       // CSS source order and blow the mark up to its container's width.
       className={cn("h-auto shrink-0", className)}
     >
-      <rect x="13.3" y="0.5" width="39.7" height="46" fill="var(--color-maroon-bright)" />
-      <path d="M66 2 L100 11 L100 62 L66 49 Z" fill="var(--color-maroon-bright)" />
+      <rect x="13.3" y="0.5" width="39.7" height="46" fill="var(--color-maroon)" />
+      <path d="M66 2 L100 11 L100 62 L66 49 Z" fill="var(--color-maroon)" />
       <path d="M1 4 L32.3 13 L32.3 62 L1 49 Z" fill="var(--color-ash)" opacity="0.8" />
       <rect x="44.6" y="19.6" width="40.9" height="46.4" fill="var(--color-ash)" opacity="0.8" />
     </svg>
@@ -40,17 +40,17 @@ export function Logo({
       <span className="flex flex-col leading-none">
         <span
           className={cn(
-            "font-sans font-light tracking-tight text-bone",
+            "font-sans font-light tracking-tight text-ink",
             compact ? "text-lg" : "text-xl",
           )}
         >
           metro{" "}
-          <span className="font-normal tracking-wide text-maroon-bright">
+          <span className="font-normal tracking-wide text-maroon">
             SURFACES
           </span>
         </span>
         {!compact && (
-          <span className="mt-1 font-display text-[0.6875rem] italic tracking-wide text-bone-dim">
+          <span className="mt-1 font-display text-[0.6875rem] italic tracking-wide text-ink-dim">
             Beautiful Spaces, Beautiful Life
           </span>
         )}

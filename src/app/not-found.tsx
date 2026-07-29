@@ -14,20 +14,20 @@ export default function NotFound() {
         <div className="relative max-w-2xl">
           <Reveal>
             <p className="eyebrow flex items-center gap-3">
-              <span className="h-px w-10 bg-maroon-bright" />
+              <span className="h-px w-10 bg-maroon-deep" />
               Error 404
             </p>
-            <h1 className="mt-7 font-display text-6xl leading-[1.02] font-light text-balance text-gradient-bone lg:text-8xl">
+            <h1 className="mt-7 font-display text-6xl leading-[1.02] font-light text-balance text-gradient-ink lg:text-8xl">
               This surface doesn&apos;t exist.
             </h1>
-            <p className="mt-7 text-base leading-relaxed text-bone-soft text-pretty">
+            <p className="mt-7 text-base leading-relaxed text-ink-soft text-pretty">
               The page you&apos;re looking for has moved or never existed. Head
               back to the collection — everything we supply is there.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/"
-                className="group inline-flex items-center gap-3 bg-maroon px-7 py-4 text-xs tracking-[0.2em] uppercase text-bone transition-colors duration-500 hover:bg-maroon-bright"
+                className="group inline-flex items-center gap-3 bg-maroon px-7 py-4 text-xs tracking-[0.2em] uppercase text-white transition-colors duration-500 hover:bg-maroon-deep"
               >
                 Back home
                 <span className="transition-transform duration-500 group-hover:translate-x-1">
@@ -36,7 +36,7 @@ export default function NotFound() {
               </Link>
               <Link
                 href="/products"
-                className="group inline-flex items-center gap-3 border border-line-strong px-7 py-4 text-xs tracking-[0.2em] uppercase text-bone-soft transition-colors duration-500 hover:border-bone-soft hover:text-bone"
+                className="group inline-flex items-center gap-3 border border-line-strong px-7 py-4 text-xs tracking-[0.2em] uppercase text-ink-soft transition-colors duration-500 hover:border-ink-dim hover:text-ink"
               >
                 View products
                 <span className="transition-transform duration-500 group-hover:translate-x-1">

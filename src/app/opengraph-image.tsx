@@ -17,12 +17,12 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0a0908",
+          background: "#faf7f3",
           padding: 72,
           position: "relative",
         }}
       >
-        {/* Maroon bloom */}
+        {/* Maroon bloom — a tint on paper, not a glow */}
         <div
           style={{
             position: "absolute",
@@ -32,7 +32,7 @@ export default function OpenGraphImage() {
             height: 620,
             borderRadius: 620,
             background: "#8b1a26",
-            opacity: 0.28,
+            opacity: 0.09,
           }}
         />
 
@@ -45,7 +45,7 @@ export default function OpenGraphImage() {
               top: 0,
               width: 56,
               height: 74,
-              background: "#b62a3b",
+              background: "#8b1a26",
             }}
           />
           <div
@@ -55,8 +55,8 @@ export default function OpenGraphImage() {
               top: 22,
               width: 58,
               height: 74,
-              background: "#c9c6c2",
-              opacity: 0.82,
+              background: "#b0a9a0",
+              opacity: 0.85,
             }}
           />
         </div>
@@ -67,16 +67,16 @@ export default function OpenGraphImage() {
               fontSize: 22,
               letterSpacing: 8,
               textTransform: "uppercase",
-              color: "#78716a",
+              color: "#857d75",
               marginBottom: 26,
             }}
           >
             {site.descriptor}
           </div>
-          <div style={{ fontSize: 88, lineHeight: 1.05, color: "#ede8e1" }}>
+          <div style={{ fontSize: 88, lineHeight: 1.05, color: "#1c1918" }}>
             Beautiful Spaces,
           </div>
-          <div style={{ fontSize: 88, lineHeight: 1.05, color: "#b62a3b" }}>
+          <div style={{ fontSize: 88, lineHeight: 1.05, color: "#8b1a26" }}>
             Beautiful Life
           </div>
         </div>
@@ -87,15 +87,15 @@ export default function OpenGraphImage() {
             justifyContent: "space-between",
             alignItems: "flex-end",
             position: "relative",
-            borderTop: "1px solid rgba(237,232,225,0.16)",
+            borderTop: "1px solid rgba(28,25,24,0.16)",
             paddingTop: 28,
           }}
         >
           <div style={{ display: "flex", gap: 12, fontSize: 30 }}>
-            <span style={{ color: "#ede8e1" }}>metro</span>
-            <span style={{ color: "#b62a3b" }}>SURFACES</span>
+            <span style={{ color: "#1c1918" }}>metro</span>
+            <span style={{ color: "#8b1a26" }}>SURFACES</span>
           </div>
-          <div style={{ fontSize: 22, color: "#78716a" }}>
+          <div style={{ fontSize: 22, color: "#857d75" }}>
             Acrycore · Laminates · Louvers · Cane Wallpaper
           </div>
         </div>

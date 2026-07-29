@@ -7,12 +7,12 @@ export function Stats() {
     <RevealGroup className="grid grid-cols-2 gap-px border-y border-line bg-line lg:grid-cols-4">
       {stats.map((stat) => (
         <RevealItem key={stat.label}>
-          <div className="group h-full bg-ink px-6 py-12 text-center transition-colors duration-700 hover:bg-ink-card lg:py-16">
-            <p className="font-display text-5xl font-light text-bone lg:text-6xl">
+          <div className="group h-full bg-paper px-6 py-12 text-center transition-colors duration-700 hover:bg-paper-raised lg:py-16">
+            <p className="font-display text-5xl font-light text-ink lg:text-6xl">
               <Counter to={stat.value} suffix={stat.suffix} />
             </p>
-            <div className="mx-auto mt-5 h-px w-8 bg-maroon-bright transition-all duration-700 group-hover:w-16" />
-            <p className="mt-5 text-xs leading-relaxed tracking-wide text-bone-dim">
+            <div className="mx-auto mt-5 h-px w-8 bg-maroon-deep transition-all duration-700 group-hover:w-16" />
+            <p className="mt-5 text-xs leading-relaxed tracking-wide text-ink-dim">
               {stat.label}
             </p>
           </div>

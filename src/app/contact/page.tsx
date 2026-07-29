@@ -34,18 +34,18 @@ export default function ContactPage() {
 
           <div className="grid gap-4 lg:col-span-5">
             <Reveal className="h-full">
-              <div className="relative h-full overflow-hidden border border-line bg-ink-raised p-8 lg:p-10">
+              <div className="relative h-full overflow-hidden border border-line bg-paper-sunk p-8 lg:p-10">
                 <div className="bloom pointer-events-none absolute -top-24 -right-16 h-64 w-64 opacity-70" />
                 <div className="relative">
                   <p className="eyebrow">Operating hours</p>
-                  <p className="mt-6 font-display text-3xl leading-tight font-light text-bone">
+                  <p className="mt-6 font-display text-3xl leading-tight font-light text-ink">
                     {contact.hours.days}
                   </p>
-                  <p className="mt-2 font-display text-2xl font-light text-maroon-bright">
+                  <p className="mt-2 font-display text-2xl font-light text-maroon">
                     {contact.hours.time}
                   </p>
                   <div className="mt-7 h-px w-12 bg-line-strong" />
-                  <p className="mt-7 text-sm leading-relaxed text-bone-dim text-pretty">
+                  <p className="mt-7 text-sm leading-relaxed text-ink-dim text-pretty">
                     {contact.hours.note}. Outside these hours, send a WhatsApp
                     message or email and we&apos;ll pick it up the next working
                     morning.
@@ -55,27 +55,27 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="border border-line bg-ink p-8 lg:p-10">
+              <div className="border border-line bg-paper p-8 lg:p-10">
                 <p className="eyebrow">Direct lines</p>
                 <ul className="mt-6 space-y-5">
                   <li>
-                    <p className="text-xs tracking-[0.16em] uppercase text-bone-dim">
+                    <p className="text-xs tracking-[0.16em] uppercase text-ink-dim">
                       Phone
                     </p>
                     <a
                       href={contact.phoneHref}
-                      className="link-underline mt-1.5 block font-display text-2xl font-light text-bone"
+                      className="link-underline mt-1.5 block font-display text-2xl font-light text-ink"
                     >
                       {contact.phone}
                     </a>
                   </li>
                   <li>
-                    <p className="text-xs tracking-[0.16em] uppercase text-bone-dim">
+                    <p className="text-xs tracking-[0.16em] uppercase text-ink-dim">
                       Email
                     </p>
                     <a
                       href={contact.emailHref}
-                      className="link-underline mt-1.5 block text-lg break-all text-bone"
+                      className="link-underline mt-1.5 block text-lg break-all text-ink"
                     >
                       {contact.email}
                     </a>
