@@ -41,7 +41,7 @@ export const nav = [
  * you're ready — nothing else needs to change.
  */
 export const stats = [
-  { value: 20, suffix: "+", label: "Years of industry experience" },
+  { value: 30, suffix: "+", label: "Years of industry experience" },
   { value: 4, suffix: "", label: "Specialist product lines" },
   { value: 6, suffix: " days", label: "Service window, Mon–Sat" },
 ] as const;
