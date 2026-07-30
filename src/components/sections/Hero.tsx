@@ -248,8 +248,6 @@ export function Hero() {
               <span>8 × 4 ft standard</span>
               <span className="h-2.5 w-px bg-line-strong" />
               <span>UV resistant</span>
-              <span className="h-2.5 w-px bg-line-strong" />
-              <span>ISO certified</span>
             </motion.p>
           </div>
         </div>
