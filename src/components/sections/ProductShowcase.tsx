@@ -12,7 +12,7 @@ import { products } from "@/lib/products";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * Desktop: an expanding panel rail — hovering a product grows it and reveals
+ * Desktop: an expanding panel rail. Hovering a product grows it and reveals
  * its detail, the way a sample board opens up.
  * Mobile: the same content as stacked cards.
  */
@@ -39,7 +39,7 @@ export function ProductShowcase() {
             >
               <Image
                 src={product.image}
-                alt={`${product.name} — ${product.category} surface by Metro Surfaces`}
+                alt={`${product.name}, ${product.category} surface by Metro Surfaces`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className={cn(
@@ -52,7 +52,7 @@ export function ProductShowcase() {
 
               <div
                 className={cn(
-                  // Caption band only — veiling the whole image would bleach
+                  // Caption band only. Veiling the whole image would bleach
                   // it out, since these photographs are already high-key
                   "absolute inset-0 transition-opacity duration-700",
                   isActive
@@ -129,7 +129,7 @@ export function ProductShowcase() {
             >
               <Image
                 src={product.image}
-                alt={`${product.name} — ${product.category} surface by Metro Surfaces`}
+                alt={`${product.name}, ${product.category} surface by Metro Surfaces`}
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"
                 className="object-cover opacity-95 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"

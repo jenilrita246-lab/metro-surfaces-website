@@ -22,7 +22,7 @@ export default function NotFound() {
             </h1>
             <p className="mt-7 text-base leading-relaxed text-ink-soft text-pretty">
               The page you&apos;re looking for has moved or never existed. Head
-              back to the collection — everything we supply is there.
+              back to the collection. Everything we supply is there.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link

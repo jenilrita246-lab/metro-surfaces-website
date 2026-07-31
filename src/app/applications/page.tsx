@@ -8,7 +8,7 @@ import { ApplicationShowcase } from "@/components/sections/ApplicationShowcase";
 import { applicationSectors } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Applications — From Product to Space",
+  title: "Applications: From Product to Space",
   description:
     "See Metro Surfaces decorative surfaces in place: corporate office paneling, residential feature walls, restaurant ceilings, partitions, exterior cladding and more.",
   alternates: { canonical: "/applications" },
@@ -39,14 +39,14 @@ export default function ApplicationsPage() {
           <RevealGroup className="mt-14 grid gap-4 lg:grid-cols-3">
             {applicationSectors.map((sector) => (
               <RevealItem key={sector.title}>
-                {/* Photograph as a band, copy on solid paper beneath — text
+                {/* Photograph as a band, copy on solid paper beneath. Text
                     laid over these high-key interiors needed so much veiling
                     that the image stopped reading at all */}
                 <article className="group flex h-full flex-col overflow-hidden border border-line bg-paper-raised transition-shadow duration-700 hover:shadow-card">
                   <div className="relative h-52 shrink-0 overflow-hidden">
                     <Image
                       src={sector.image}
-                      alt={`${sector.title} — decorative surfaces by Metro Surfaces`}
+                      alt={`${sector.title}, decorative surfaces by Metro Surfaces`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 33vw"
                       className="object-cover grayscale-[0.5] transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0"
@@ -76,7 +76,7 @@ export default function ApplicationsPage() {
                       ))}
                     </ul>
 
-                    {/* Padding lives on the wrapper — on the rule itself the
+                    {/* Padding lives on the wrapper. On the rule itself the
                         background would fill the padding box into a block */}
                     <div className="mt-auto pt-7">
                       <span className="block h-px w-10 bg-maroon transition-all duration-700 group-hover:w-20" />

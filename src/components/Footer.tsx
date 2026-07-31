@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { LogoMark } from "@/components/Logo";
 import { Reveal } from "@/components/motion/Reveal";
+import { SocialLinks } from "@/components/SocialLinks";
 import { products } from "@/lib/products";
 import { contact, nav, site } from "@/lib/site";
 
@@ -59,9 +60,10 @@ export function Footer() {
               </span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-ink-dim text-pretty">
-              Decorative surfaces for architectural excellence — supplied to
+              Decorative surfaces for architectural excellence, supplied to
               discerning architects and interior designers.
             </p>
+            <SocialLinks className="mt-7" />
           </div>
 
           <div>
@@ -124,7 +126,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Oversized watermark — anchors the footer without extra imagery */}
+        {/* Oversized watermark anchors the footer without extra imagery */}
         <div
           aria-hidden="true"
           className="mask-fade-b pointer-events-none mt-20 select-none"

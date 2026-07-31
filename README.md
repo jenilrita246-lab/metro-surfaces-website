@@ -1,11 +1,11 @@
-# Metro Surfaces — Website
+# Metro Surfaces Website
 
 Rebuild of [metrosurfaces.in](https://www.metrosurfaces.in) as a Next.js site with a
 "warm editorial minimal" theme drawn from the brand mark: deep maroon and warm greys
 on a bone paper canvas.
 
-The home page leads with a split editorial hero — type on the left, a linked stack of
-material swatches on the right — rather than a full-bleed photo banner. Hovering a
+The home page leads with a split editorial hero (type on the left, a linked stack of
+material swatches on the right) rather than a full-bleed photo banner. Hovering a
 product row opens its swatch and vice versa; both halves read from the same
 `products` array.
 
@@ -29,7 +29,7 @@ npm run build
 
 ## Where to edit things
 
-Almost everything you'll want to change lives in two files — no component editing needed.
+Almost everything you'll want to change lives in two files. No component editing needed.
 
 | What | File |
 | --- | --- |
@@ -45,12 +45,12 @@ Images live in `public/`. Replace a file with your own of the same name and it a
 everywhere that product is shown:
 
 ```
-public/hero-ambient.webp          — unused since the banner was replaced; kept as a spare
-public/products/acrycore.webp     — Acrycore Sheets
-public/products/laminates.webp    — Premium Laminates
-public/products/louvers.webp      — Decorative Louvers
-public/products/cane.webp         — Cane Wallpaper
-public/applications/*.webp        — installed / in-situ shots
+public/hero-ambient.webp          # unused since the banner was replaced; kept as a spare
+public/products/acrycore.webp     # Acrycore Sheets
+public/products/laminates.webp    # Premium Laminates
+public/products/louvers.webp      # Decorative Louvers
+public/products/cane.webp         # Cane Wallpaper
+public/applications/*.webp        # installed / in-situ shots
 ```
 
 Keep replacements as WebP and under ~300 KB. The originals pulled from the old
@@ -64,7 +64,7 @@ Or point `image:` in `src/lib/products.ts` at a new filename.
 src/
   app/                 route per page + sitemap, robots, favicon, OG image
   components/
-    motion/            Reveal, SplitWords, Magnetic, Counter — the animation primitives
+    motion/            Reveal, SplitWords, Magnetic, Counter (animation primitives)
     sections/          Hero, ProductShowcase, ApplicationShowcase, Values, Stats, ...
     Header · Footer · Logo · Marquee · SmoothScroll · WhatsAppFab
   lib/                 site.ts (business details) · products.ts (catalogue) · cn.ts
@@ -75,7 +75,7 @@ src/
 - **Brand mark** is inline SVG in `src/components/Logo.tsx`, rebuilt as clean vectors so
   it inherits theme colours. The original supplied file is kept at `public/logo.svg`
   (a 1600-path trace, not reliably recolourable).
-- **Theme tokens** all live in the `@theme` block of `src/app/globals.css` — `paper-*`
+- **Theme tokens** all live in the `@theme` block of `src/app/globals.css`: `paper-*`
   for surfaces, `ink-*` for text, `maroon*` for the accent. Components reference only
   those names, so the palette can be retuned in one file.
 - **Imagery on a light canvas** takes a caption band, not a full veil: these product
@@ -84,17 +84,17 @@ src/
 - **Enquiry form** (`/contact`) has no backend. It composes a structured message and
   hands it to WhatsApp or the visitor's mail client. Nothing is stored or transmitted
   by the site itself.
-- **Motion** respects `prefers-reduced-motion` — smooth scroll never starts and
+- **Motion** respects `prefers-reduced-motion`. Smooth scroll never starts and
   animations collapse to near-instant for visitors who ask for less movement.
 - **TypeScript 7** ships a native compiler without the legacy API Next reads directly,
   so `next.config.ts` enables `experimental.useTypeScriptCli` to type-check via the CLI.
 
 ## Deploying
 
-Live at https://metro-surfaces-website.vercel.app — Vercel builds every push to `main`.
+Live at https://metro-surfaces-website.vercel.app. Vercel builds every push to `main`.
 
 The site builds to fully static pages, so it works on any host. Update `site.url` in
-`src/lib/site.ts` if the domain ever changes — it drives canonical URLs, the sitemap
+`src/lib/site.ts` if the domain ever changes. It drives canonical URLs, the sitemap
 and social share cards.
 
 ### Commits must be authored by `jenilrita246-lab`
@@ -111,7 +111,7 @@ is purely authorization. Set the author for this repo after any fresh clone:
 git config user.name "jenilrita246-lab" && git config user.email "260600634+jenilrita246-lab@users.noreply.github.com"
 ```
 
-This lives in `.git/config`, which is not committed — a new clone silently reverts to
+This lives in `.git/config`, which is not committed, so a new clone silently reverts to
 your global identity. Check a deploy with:
 
 ```bash
@@ -120,13 +120,13 @@ gh api repos/jenilrita246-lab/metro-surfaces-website/commits/$(git rev-parse HEA
 
 ### The custom domain
 
-`metrosurfaces.in` already points at Vercel — DNS is held at **GoDaddy**
+`metrosurfaces.in` already points at Vercel. DNS is held at **GoDaddy**
 (`ns31/ns32.domaincontrol.com`), with the apex `A` on `216.198.79.1` and `www` CNAMEd to
 a Vercel target. It is bound to the **old** project in the same Vercel team.
 
 So the cutover is a **move between projects**, not a registrar change. Adding a domain
-that's already bound elsewhere returns `409 Conflict` — use the dashboard's move prompt,
-or:
+that's already bound elsewhere returns `409 Conflict`, so use the dashboard's move
+prompt, or:
 
 ```bash
 npx vercel domains add metrosurfaces.in metro-surfaces-website --force

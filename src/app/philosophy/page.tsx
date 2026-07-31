@@ -7,7 +7,7 @@ import { Stats } from "@/components/sections/Stats";
 import { Values } from "@/components/sections/Values";
 
 export const metadata: Metadata = {
-  title: "Philosophy — Our Core Values",
+  title: "Philosophy: Our Core Values",
   description:
     "Uncompromising service, supply continuity, ethical practice and quality excellence. The principles behind how Metro Surfaces partners with architects and interior designers.",
   alternates: { canonical: "/philosophy" },

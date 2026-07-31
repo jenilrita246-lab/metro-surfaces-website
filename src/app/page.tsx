@@ -51,7 +51,7 @@ export default function HomePage() {
             index="02"
             eyebrow="The Collection"
             title="Four surfaces, specified with intent."
-            lead="Each line is selected for architectural excellence and lasting performance — not for catalogue padding."
+            lead="Each line is selected for architectural excellence and lasting performance, not for catalogue padding."
             className="flex-1"
           />
         </div>

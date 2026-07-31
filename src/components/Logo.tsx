@@ -5,8 +5,8 @@ import { cn } from "@/lib/cn";
  *
  * The supplied logo.svg is a 1600-path trace with black text, which is
  * invisible on a dark canvas and can't be recoloured reliably. This
- * reproduces the same four overlapping panels — two maroon, two ash,
- * ash laid over maroon to create the dusty-pink intersections — as
+ * reproduces the same four overlapping panels (two maroon, two ash, with
+ * ash laid over maroon to create the dusty-pink intersections) as
  * clean vectors that inherit theme colours and can be animated.
  */
 export function LogoMark({ className }: { className?: string }) {
@@ -15,7 +15,7 @@ export function LogoMark({ className }: { className?: string }) {
       viewBox="0 0 100 66"
       fill="none"
       aria-hidden="true"
-      // Width comes only from the caller — a base `w-full` here would win on
+      // Width comes only from the caller. A base `w-full` here would win on
       // CSS source order and blow the mark up to its container's width.
       className={cn("h-auto shrink-0", className)}
     >

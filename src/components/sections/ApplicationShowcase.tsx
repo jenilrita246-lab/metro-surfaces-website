@@ -95,7 +95,7 @@ export function ApplicationShowcase() {
               >
                 <Image
                   src={application.image}
-                  alt={`${product.name} used for ${application.title} — Metro Surfaces`}
+                  alt={`${product.name} used for ${application.title}, Metro Surfaces`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover opacity-95 transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"

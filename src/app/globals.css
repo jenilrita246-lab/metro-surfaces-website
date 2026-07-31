@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   METRO SURFACES — "Warm Editorial Minimal"
+   METRO SURFACES / "Warm Editorial Minimal"
    Bone paper canvas, warm near-black text, maroon accent from the
    brand mark. Ash grey carries over from the logo's panel planes.
 ------------------------------------------------------------------- */
 
 @theme {
-  /* Canvas — paper tones, lightest to deepest */
+  /* Canvas: paper tones, lightest to deepest */
   --color-paper: #faf7f3;
   --color-paper-raised: #ffffff;
   --color-paper-sunk: #f1ece5;
   --color-paper-deep: #ebe4da;
 
-  /* Type — warm near-black through to muted grey */
+  /* Type: warm near-black through to muted grey */
   --color-ink: #1c1918;
   --color-ink-soft: #57504a;
   --color-ink-dim: #857d75;
@@ -28,11 +28,11 @@
   --color-line: rgba(28, 25, 24, 0.1);
   --color-line-strong: rgba(28, 25, 24, 0.2);
 
-  /* Fonts — bound in layout.tsx via next/font */
+  /* Fonts: bound in layout.tsx via next/font */
   --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Elevation — light themes need shadow where dark used glow */
+  /* Elevation: light themes need shadow where dark used glow */
   --shadow-card: 0 1px 2px rgba(28, 25, 24, 0.04), 0 8px 24px -12px rgba(28, 25, 24, 0.14);
   --shadow-lift: 0 2px 4px rgba(28, 25, 24, 0.05), 0 20px 46px -18px rgba(28, 25, 24, 0.22);
 
@@ -155,7 +155,7 @@
 }
 
 @layer components {
-  /* Paper tooth — a whisper of texture so large bone areas aren't dead flat.
+  /* Paper tooth: a whisper of texture so large bone areas aren't dead flat.
      Much lighter than the dark theme's grain, which would read as dirt here. */
   .grain::after {
     content: "";
@@ -167,7 +167,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* Small uppercase index label, e.g. "01 — Philosophy" */
+  /* Small uppercase index label, e.g. "01 Philosophy" */
   .eyebrow {
     font-size: 0.6875rem;
     font-weight: 400;
@@ -188,7 +188,7 @@
     );
   }
 
-  /* Soft maroon wash — on paper this is a tint, not a glow */
+  /* Soft maroon wash. On paper this is a tint, not a glow */
   .bloom {
     position: absolute;
     pointer-events: none;

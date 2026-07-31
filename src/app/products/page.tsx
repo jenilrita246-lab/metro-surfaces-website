@@ -7,7 +7,7 @@ import { ProductRow } from "@/components/sections/ProductRow";
 import { products, specifications } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Products — Acrycore, Laminates, Louvers & Cane Wallpaper",
+  title: "Products: Acrycore, Laminates, Louvers & Cane Wallpaper",
   description:
     "Explore the Metro Surfaces collection: UV-resistant ASA Acrycore sheets, high-pressure decorative laminates, architectural louvers and natural cane wallpaper. 8×4 ft standard, custom sizes on request.",
   alternates: { canonical: "/products" },
@@ -70,7 +70,7 @@ export default function ProductsPage() {
           <Reveal delay={0.15}>
             <p className="mt-8 text-sm text-ink-dim">
               Need something outside these ranges? Custom sizes and finishes are
-              available on request — talk to us about the project.
+              available on request. Talk to us about the project.
             </p>
           </Reveal>
         </div>

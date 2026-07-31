@@ -37,19 +37,19 @@ export function EnquiryForm() {
 
   const compose = () =>
     [
-      "New enquiry — Metro Surfaces",
+      "New enquiry for Metro Surfaces",
       "",
-      `Name: ${form.name || "—"}`,
-      `Practice / Company: ${form.practice || "—"}`,
+      `Name: ${form.name || "Not given"}`,
+      `Practice / Company: ${form.practice || "Not given"}`,
       `Product of interest: ${form.product}`,
       `Project type: ${form.projectType}`,
       "",
-      `Details: ${form.message || "—"}`,
+      `Details: ${form.message || "Not given"}`,
     ].join("\n");
 
   const whatsappHref = `${contact.whatsapp}?text=${encodeURIComponent(compose())}`;
   const mailHref = `${contact.emailHref}?subject=${encodeURIComponent(
-    `Enquiry — ${form.product}${form.practice ? ` (${form.practice})` : ""}`,
+    `Enquiry: ${form.product}${form.practice ? ` (${form.practice})` : ""}`,
   )}&body=${encodeURIComponent(compose())}`;
 
   const incomplete = form.name.trim() === "" || form.message.trim() === "";
@@ -64,7 +64,7 @@ export function EnquiryForm() {
         Tell us about the project.
       </h3>
       <p className="mt-3 text-sm text-ink-dim text-pretty">
-        Fill this in and send it straight to our WhatsApp or email — whichever
+        Fill this in and send it straight to our WhatsApp or email, whichever
         you prefer. Nothing is stored on this website.
       </p>
 
