@@ -36,13 +36,12 @@ export const nav = [
 
 /**
  * Stats band. These are deliberately limited to claims already made on the
- * existing site (ISO-certified sourcing, "decades of experience", four
- * product lines, Mon–Sat trading). Swap in your real project count or
- * founding year here when you're ready — nothing else needs to change.
+ * existing site ("decades of experience", four product lines, Mon–Sat
+ * trading). Swap in your real project count or founding year here when
+ * you're ready — nothing else needs to change.
  */
 export const stats = [
-  { value: 20, suffix: "+", label: "Years of industry experience" },
+  { value: 30, suffix: "+", label: "Years of industry experience" },
   { value: 4, suffix: "", label: "Specialist product lines" },
-  { value: 100, suffix: "%", label: "ISO-certified sourcing" },
   { value: 6, suffix: " days", label: "Service window, Mon–Sat" },
 ] as const;

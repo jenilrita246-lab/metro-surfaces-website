@@ -186,7 +186,6 @@ export const specifications = [
   {
     title: "Quality Standards",
     rows: [
-      ["Manufacturing", "ISO certified"],
       ["Weather resistance", "Tested"],
       ["Fire safety", "Compliant"],
     ],
