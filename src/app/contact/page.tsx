@@ -4,10 +4,11 @@ import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/motion/Reveal";
 import { ContactBand } from "@/components/sections/ContactBand";
 import { EnquiryForm } from "@/components/sections/EnquiryForm";
+import { SocialLinks } from "@/components/SocialLinks";
 import { contact } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact — Talk to our surface specialists",
+  title: "Contact: Talk to our surface specialists",
   description:
     "Reach Metro Surfaces on WhatsApp, phone or email for premium decorative surface solutions. Monday to Saturday, 9:00 AM – 6:00 PM.",
   alternates: { canonical: "/contact" },
@@ -81,6 +82,17 @@ export default function ContactPage() {
                     </a>
                   </li>
                 </ul>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <div className="border border-line bg-paper p-8 lg:p-10">
+                <p className="eyebrow">Follow us</p>
+                <p className="mt-4 text-sm leading-relaxed text-ink-dim text-pretty">
+                  New finishes, recent installations and what is moving in the
+                  studio.
+                </p>
+                <SocialLinks variant="list" className="mt-7" />
               </div>
             </Reveal>
           </div>

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Logo } from "@/components/Logo";
+import { SocialLinks } from "@/components/SocialLinks";
 import { cn } from "@/lib/cn";
 import { getLenis } from "@/lib/lenis-store";
 import { contact, nav } from "@/lib/site";
@@ -77,7 +78,7 @@ export function Header() {
         >
           <Link
             href="/"
-            aria-label="Metro Surfaces — home"
+            aria-label="Metro Surfaces home"
             className="group relative z-10 shrink-0"
           >
             <Logo compact={scrolled} className="transition-transform duration-500 group-hover:scale-[1.02]" />
@@ -203,6 +204,7 @@ export function Header() {
               >
                 {contact.email}
               </a>
+              <SocialLinks className="mt-6" />
             </motion.div>
           </motion.div>
         )}

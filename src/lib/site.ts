@@ -9,7 +9,7 @@ export const site = {
   descriptor: "Premium Decorative Surfaces",
   url: "https://www.metrosurfaces.in",
   description:
-    "Metro Surfaces supplies premium decorative surfaces — Acrycore sheets, high-pressure laminates, architectural louvers and cane wallpaper — to discerning architects and interior designers across India.",
+    "Metro Surfaces supplies premium decorative surfaces to discerning architects and interior designers across India: Acrycore sheets, high-pressure laminates, architectural louvers and cane wallpaper.",
 } as const;
 
 export const contact = {
@@ -26,6 +26,29 @@ export const contact = {
   },
 } as const;
 
+/**
+ * Social profiles. Order here is the order they render everywhere.
+ * `handle` is the human-readable label shown next to the icon in list
+ * layouts; the icon-only rows fall back to `label` for screen readers.
+ */
+export const social = [
+  {
+    label: "Instagram",
+    handle: "@metro_surfaces",
+    href: "https://www.instagram.com/metro_surfaces/",
+  },
+  {
+    label: "Facebook",
+    handle: "metrosurfaces1",
+    href: "https://www.facebook.com/metrosurfaces1",
+  },
+  {
+    label: "LinkedIn",
+    handle: "Metro Surface",
+    href: "https://www.linkedin.com/company/metro-surface/",
+  },
+] as const;
+
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
@@ -38,7 +61,7 @@ export const nav = [
  * Stats band. These are deliberately limited to claims already made on the
  * existing site ("decades of experience", four product lines, Mon–Sat
  * trading). Swap in your real project count or founding year here when
- * you're ready — nothing else needs to change.
+ * you're ready. Nothing else needs to change.
  */
 export const stats = [
   { value: 30, suffix: "+", label: "Years of industry experience" },

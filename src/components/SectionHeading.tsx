@@ -44,7 +44,7 @@ export function SectionHeading({
   );
 }
 
-/** Faint vertical rules — a quiet architectural grid behind hero sections. */
+/** Faint vertical rules forming a quiet architectural grid behind heroes. */
 export function GridLines({ className }: { className?: string }) {
   return (
     <div

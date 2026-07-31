@@ -10,7 +10,7 @@ import { setLenis } from "@/lib/lenis-store";
  * Momentum scrolling for the whole document.
  *
  * Implemented as a null-rendering effect rather than a wrapper component so
- * the page tree is never remounted — that keeps scroll-triggered animations
+ * the page tree is never remounted. That keeps scroll-triggered animations
  * from replaying when smooth scroll initialises. Honours prefers-reduced-motion
  * by simply never starting.
  */
@@ -67,7 +67,7 @@ export function SmoothScroll() {
     };
   }, []);
 
-  // Land at the top on navigation — Lenis holds its own scroll position.
+  // Land at the top on navigation. Lenis holds its own scroll position.
   useEffect(() => {
     lenisRef.current?.scrollTo(0, { immediate: true });
   }, [pathname]);

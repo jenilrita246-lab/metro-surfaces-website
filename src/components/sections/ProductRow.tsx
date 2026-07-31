@@ -43,14 +43,14 @@ export function ProductRow({
           <motion.div style={{ y: imageY }} className="absolute inset-[-8%]">
             <Image
               src={product.image}
-              alt={`${product.name} — ${product.category} decorative surface supplied by Metro Surfaces`}
+              alt={`${product.name}, ${product.category} decorative surface supplied by Metro Surfaces`}
               fill
               sizes="(max-width: 1024px) 100vw, 48vw"
               className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
             />
           </motion.div>
           {/* Paper wash under the index numeral so it stays legible on any
-              photograph — the numeral sits top-left */}
+              photograph. The numeral sits top-left */}
           <div className="absolute inset-0 bg-gradient-to-br from-paper/85 via-transparent to-transparent" />
           <span className="absolute top-6 left-6 font-display text-5xl font-light text-ink/35">
             {product.index}

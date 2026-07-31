@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = `${site.name} — ${site.tagline}`;
+export const alt = `${site.name} | ${site.tagline}`;
 
 /** Social share card, generated at build time so it always matches the theme. */
 export default function OpenGraphImage() {
@@ -22,7 +22,7 @@ export default function OpenGraphImage() {
           position: "relative",
         }}
       >
-        {/* Maroon bloom — a tint on paper, not a glow */}
+        {/* Maroon bloom, a tint on paper rather than a glow */}
         <div
           style={{
             position: "absolute",

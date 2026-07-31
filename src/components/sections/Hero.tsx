@@ -15,7 +15,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 /**
  * Split editorial hero: type on paper at left, a vertical stack of material
  * swatches at right. The two halves share one `active` index, so hovering a
- * product row opens its swatch and hovering a swatch marks its row — the
+ * product row opens its swatch and hovering a swatch marks its row. The
  * page introduces the catalogue instead of a generic interior photo.
  */
 export function Hero() {
@@ -71,11 +71,11 @@ export function Hero() {
               className="mt-7 max-w-lg text-base leading-relaxed text-ink-soft text-pretty"
             >
               Four specialist surface lines for architects and interior
-              designers who specify materials that have to hold up — visually
+              designers who specify materials that have to hold up, visually
               and physically.
             </motion.p>
 
-            {/* Product index — the left-hand mirror of the swatch stack */}
+            {/* Product index, the left-hand mirror of the swatch stack */}
             <motion.ul
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -151,7 +151,7 @@ export function Hero() {
 
           {/* ---------------- Right: swatch stack ---------------- */}
           <div className="min-w-0 lg:col-span-6 xl:col-span-5">
-            {/* 2×2 on small screens — four tiles side by side leaves each too
+            {/* 2×2 on small screens. Four tiles side by side leaves each too
                 narrow for its label. Vertical accordion from lg up. */}
             <div className="grid h-[26rem] grid-cols-2 gap-1.5 sm:h-[30rem] lg:flex lg:h-[34rem] lg:flex-col xl:h-[36rem]">
               {products.map((product, i) => (
@@ -174,12 +174,12 @@ export function Hero() {
                   <Link
                     href={`/products#${product.slug}`}
                     onFocus={() => setActive(i)}
-                    aria-label={`${product.name} — ${product.category}`}
+                    aria-label={`${product.name}, ${product.category}`}
                     className="group relative flex h-full w-full items-end overflow-hidden border border-line"
                   >
                     <Image
                       src={product.image}
-                      alt={`${product.name} — ${product.category} surface supplied by Metro Surfaces`}
+                      alt={`${product.name}, ${product.category} surface supplied by Metro Surfaces`}
                       fill
                       priority={i === 0}
                       sizes="(max-width: 1024px) 50vw, 34vw"
@@ -220,7 +220,7 @@ export function Hero() {
                       </p>
 
                       {/* Blurb only on the open swatch, and only where there's
-                          room for it — the collapsed rail is too narrow */}
+                          room for it. The collapsed rail is too narrow */}
                       <motion.div
                         animate={{
                           height: active === i ? "auto" : 0,
