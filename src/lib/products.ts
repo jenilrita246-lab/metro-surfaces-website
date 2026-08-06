@@ -10,6 +10,8 @@ export type Product = {
   tone: [string, string];
   image: string;
   applications: { title: string; image: string }[];
+  /** Optional colour catalogue for this line, shown as a third CTA. */
+  library?: { href: string; label: string };
 };
 
 export const products: Product[] = [
@@ -33,6 +35,7 @@ export const products: Product[] = [
       { title: "Corporate Office Paneling", image: "/applications/office-paneling.webp" },
       { title: "Residential Feature Wall", image: "/applications/residential-wall.webp" },
     ],
+    library: { href: "/acrycore", label: "Browse all colours" },
   },
   {
     slug: "premium-laminates",

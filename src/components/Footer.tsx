@@ -95,6 +95,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/acrycore"
+                  className="link-underline text-sm text-ink-soft transition-colors duration-300 hover:text-ink"
+                >
+                  Acrycore™ Library
+                </Link>
+              </li>
             </ul>
           </div>
 

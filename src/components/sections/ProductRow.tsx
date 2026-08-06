@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -93,6 +94,17 @@ export function ProductRow({
                 →
               </span>
             </a>
+            {product.library && (
+              <Link
+                href={product.library.href}
+                className="group inline-flex items-center gap-3 border border-line-strong px-7 py-3.5 text-xs tracking-[0.2em] uppercase text-ink-soft transition-colors duration-500 hover:border-maroon hover:text-maroon"
+              >
+                {product.library.label}
+                <span className="transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            )}
             <a
               href="/applications"
               className="group inline-flex items-center gap-3 border border-line-strong px-7 py-3.5 text-xs tracking-[0.2em] uppercase text-ink-soft transition-colors duration-500 hover:border-ink-dim hover:text-ink"
