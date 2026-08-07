@@ -39,6 +39,18 @@ Almost everything you'll want to change lives in two files. No component editing
 Everything else reads from those. Change the phone number in `site.ts` and it updates
 the header, footer, contact page, floating WhatsApp button and enquiry form at once.
 
+### Alternate URL spellings
+
+Next serves routes case sensitively and only at the exact path, so `/Acrycore` and the
+dropped-A `/crycore` would each 404 on their own. `src/middleware.ts` redirects both,
+in any casing, to `/acrycore`. Add a line to the `aliases` map there to point another
+misspelling or old URL at a live page. Keys are lowercase and matched against the
+lowercased request, so one entry covers every capitalisation of it.
+
+They redirect rather than each serving their own copy of the page, so the catalogue
+keeps one canonical URL and its search ranking stays on `/acrycore`. Aliases stay out
+of `sitemap.ts` for the same reason.
+
 ### Swapping images
 
 Images live in `public/`. Replace a file with your own of the same name and it appears
