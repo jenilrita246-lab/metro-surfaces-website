@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { PageHero } from "@/components/PageHero";
@@ -6,12 +5,13 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AcrycoreLibrary } from "@/components/sections/AcrycoreLibrary";
 import { acrycoreColours, acrycorePillars } from "@/lib/acrycore";
-import { contact, site } from "@/lib/site";
+import { pageMetadata } from "@/lib/metadata";
+import { site, whatsappLink } from "@/lib/site";
 
 const solidCount = acrycoreColours.filter((c) => c.type === "Solid").length;
 const metallicCount = acrycoreColours.length - solidCount;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Acrycore™ Digital Library: Colour Catalogue for Specifiers",
   description: `Browse all ${acrycoreColours.length} Acrycore™ shades: ${solidCount} solid and ${metallicCount} metallic finishes, each with its edge band code, Photoshop colour value and 3D scene. Search by shade name or catalogue number.`,
   keywords: [
@@ -21,14 +21,10 @@ export const metadata: Metadata = {
     "ASA Acrycore shades",
     "decorative surface colour chart",
   ],
-  alternates: { canonical: "/acrycore" },
-  openGraph: {
-    type: "website",
-    url: `${site.url}/acrycore`,
-    title: "Acrycore™ Digital Library",
-    description: `All ${acrycoreColours.length} Acrycore™ shades with edge band codes, Photoshop colour values and 3D scenes.`,
-  },
-};
+  path: "/acrycore",
+  shareTitle: "Acrycore™ Digital Library",
+  shareDescription: `All ${acrycoreColours.length} Acrycore™ shades with edge band codes, Photoshop colour values and 3D scenes.`,
+});
 
 /** Lets search engines surface individual shades from the catalogue. */
 const structuredData = {
@@ -180,7 +176,9 @@ export default function AcrycorePage() {
               className="mt-10 flex flex-wrap justify-center gap-4"
             >
               <a
-                href={contact.whatsapp}
+                href={whatsappLink(
+                  "Hi Metro Surfaces, I would like to request Acrycore samples. Catalogue numbers: ",
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-maroon px-7 py-3.5 text-xs tracking-[0.2em] uppercase text-white transition-colors duration-500 hover:bg-maroon-deep"

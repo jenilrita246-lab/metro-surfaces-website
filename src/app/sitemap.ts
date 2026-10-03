@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", priority: 1, frequency: "monthly" },
     { path: "/products", priority: 0.9, frequency: "monthly" },
     { path: "/acrycore", priority: 0.9, frequency: "monthly" },
+    { path: "/woodveneer", priority: 0.9, frequency: "monthly" },
     { path: "/applications", priority: 0.8, frequency: "monthly" },
     { path: "/philosophy", priority: 0.7, frequency: "yearly" },
     { path: "/contact", priority: 0.8, frequency: "yearly" },

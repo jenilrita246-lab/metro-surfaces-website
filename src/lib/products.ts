@@ -10,6 +10,11 @@ export type Product = {
   tone: [string, string];
   image: string;
   applications: { title: string; image: string }[];
+  /**
+   * Size or supply format, shown as a badge in the application showcase.
+   * Left out where no single format applies.
+   */
+  format?: string;
   /** Optional colour catalogue for this line, shown as a third CTA. */
   library?: { href: string; label: string };
 };
@@ -31,6 +36,7 @@ export const products: Product[] = [
     ],
     tone: ["#6b4a3a", "#2a1d18"],
     image: "/products/acrycore.webp",
+    format: "8 × 4 feet available",
     applications: [
       { title: "Corporate Office Paneling", image: "/applications/office-paneling.webp" },
       { title: "Residential Feature Wall", image: "/applications/residential-wall.webp" },
@@ -53,6 +59,7 @@ export const products: Product[] = [
     ],
     tone: ["#7a6752", "#2b241c"],
     image: "/products/laminates.webp",
+    format: "8 × 4 feet available",
     applications: [
       { title: "Retail Fit-Out", image: "/applications/office-paneling.webp" },
       { title: "Hospitality Interiors", image: "/applications/residential-wall.webp" },
@@ -95,6 +102,7 @@ export const products: Product[] = [
     ],
     tone: ["#a08a63", "#2e2519"],
     image: "/products/cane.webp",
+    format: "Supplied by the roll",
     applications: [
       { title: "Boutique Hotel Lobby", image: "/applications/residential-wall.webp" },
       { title: "Residential Feature Wall", image: "/applications/restaurant-ceiling.webp" },
