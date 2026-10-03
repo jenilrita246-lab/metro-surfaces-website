@@ -67,14 +67,34 @@ export default function WoodVeneerPage() {
       <PageHero
         eyebrow="Wood Veneer Digital Library"
         title="Every grain, with the number that carries it into your drawings."
-        lead="Use the colour numbers from your Acry Plus™ folder to locate a finish here. Each one shows its grain up close and opens a 3D scene showing it in place."
+        lead={`${woodVeneers.length} finishes, colours ${firstCode} to ${lastCode}. Search by the colour number from your Acry Plus™ folder, then open any swatch for its specification and 3D scene.`}
+        compact
       />
 
+      {/* ---------------- The library ---------------- */}
+      <section
+        id="library"
+        className="scroll-mt-24 bg-paper-sunk pt-6 pb-24 lg:pt-8 lg:pb-32"
+      >
+        <div className="shell">
+          <div className="border border-line bg-paper">
+            <WoodVeneerLibrary />
+          </div>
+
+          <Reveal delay={0.15}>
+            <p className="mt-8 text-sm text-ink-dim text-pretty">
+              Screen colour is indicative only. Always confirm a finish against
+              a physical Acry Plus™ sample under actual lighting conditions
+              before finalising a specification.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ---------------- Why Acry Plus ---------------- */}
-      <section className="border-b border-line py-24 lg:py-32">
+      <section className="border-t border-line py-24 lg:py-32">
         <div className="shell">
           <SectionHeading
-            index="01"
             eyebrow="Why Acry Plus™"
             title="A calm surface for thoughtful interiors."
             lead="Developed for interiors where restraint, balance and longevity matter. Each surface is made to stay visually stable over time, so form, light and proportion define the space."
@@ -122,32 +142,6 @@ export default function WoodVeneerPage() {
                 calibrated ply.
               </p>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ---------------- The library ---------------- */}
-      <section id="library" className="scroll-mt-24 bg-paper-sunk py-24 lg:py-32">
-        <div className="shell">
-          <SectionHeading
-            index="02"
-            eyebrow="The Catalogue"
-            title="The full collection."
-            lead={`${woodVeneers.length} finishes in total, colours ${firstCode} to ${lastCode}. Search by colour number, then open any swatch for its specification.`}
-          />
-        </div>
-
-        <div className="shell mt-14">
-          <div className="border border-line bg-paper">
-            <WoodVeneerLibrary />
-          </div>
-
-          <Reveal delay={0.15}>
-            <p className="mt-8 text-sm text-ink-dim text-pretty">
-              Screen colour is indicative only. Always confirm a finish against
-              a physical Acry Plus™ sample under actual lighting conditions
-              before finalising a specification.
-            </p>
           </Reveal>
         </div>
       </section>
