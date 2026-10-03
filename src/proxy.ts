@@ -12,6 +12,8 @@ import { NextResponse, type NextRequest } from "next/server";
 const aliases = new Map([
   ["/acrycore", "/acrycore"],
   ["/crycore", "/acrycore"],
+  ["/woodveneer", "/woodveneer"],
+  ["/wood-veneer", "/woodveneer"],
 ]);
 
 /**
@@ -19,7 +21,7 @@ const aliases = new Map([
  * keeps the catalogue's search ranking on /acrycore instead of splitting it
  * across near-duplicate copies.
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const canonical = aliases.get(pathname.toLowerCase());
 
@@ -36,12 +38,16 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   /**
-   * Only the aliased paths run the middleware; every other route skips it.
+   * Only the aliased paths run the proxy; every other route skips it.
    *
    * Spelled out as character classes because this matcher, unlike the one
    * behind `redirects()` in next.config.ts, is case sensitive: a plain
    * "/acrycore" here would never see /Acrycore and the page would stay a 404.
-   * The optional leading A covers both /acrycore and /crycore in one pattern.
+   * The optional leading A covers both /acrycore and /crycore in one pattern,
+   * and the optional hyphen covers /woodveneer and /wood-veneer in the other.
    */
-  matcher: ["/:variant([Aa]?[Cc][Rr][Yy][Cc][Oo][Rr][Ee])"],
+  matcher: [
+    "/:variant([Aa]?[Cc][Rr][Yy][Cc][Oo][Rr][Ee])",
+    "/:variant([Ww][Oo][Oo][Dd]-?[Vv][Ee][Nn][Ee][Ee][Rr])",
+  ],
 };
