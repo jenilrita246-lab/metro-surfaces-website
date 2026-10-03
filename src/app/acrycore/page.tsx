@@ -64,14 +64,33 @@ export default function AcrycorePage() {
       <PageHero
         eyebrow="Acrycore™ Digital Library"
         title="Every shade, with the codes that carry it into your drawings."
-        lead="Use the product names or numbers from your Acrycore™ folder to locate a finish here. Each shade lists its matching edge band, Photoshop colour value and a 3D scene showing it in place."
+        lead={`${acrycoreColours.length} shades: ${solidCount} solid and ${metallicCount} metallic. Search by the shade name or catalogue number from your Acrycore™ folder, then open any swatch for its edge band, Photoshop colour value and 3D scene.`}
+        compact
       />
 
+      {/* ---------------- The library ---------------- */}
+      <section
+        id="library"
+        className="scroll-mt-24 bg-paper-sunk pt-6 pb-24 lg:pt-8 lg:pb-32"
+      >
+        <div className="shell">
+          <div className="border border-line bg-paper">
+            <AcrycoreLibrary />
+          </div>
+
+          <Reveal delay={0.15}>
+            <p className="mt-8 text-sm text-ink-dim text-pretty">
+              Screen colour is indicative only. Always confirm a shade against a
+              physical Acrycore™ chip before finalising a specification.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ---------------- Why Acrycore ---------------- */}
-      <section className="border-b border-line py-24 lg:py-32">
+      <section className="border-t border-line py-24 lg:py-32">
         <div className="shell">
           <SectionHeading
-            index="01"
             eyebrow="Why Acrycore™"
             title="Engineered as a true performance surface."
             lead="Not a PVC compromise. Acrycore is specified where a finish has to hold its colour, its edge and its flatness for the life of the interior."
@@ -127,31 +146,6 @@ export default function AcrycorePage() {
                 </p>
               </div>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ---------------- The library ---------------- */}
-      <section id="library" className="scroll-mt-24 bg-paper-sunk py-24 lg:py-32">
-        <div className="shell">
-          <SectionHeading
-            index="02"
-            eyebrow="The Catalogue"
-            title="The full palette."
-            lead={`${acrycoreColours.length} shades in total: ${solidCount} solid and ${metallicCount} metallic. Search by shade name or catalogue number, then open any swatch for its full specification.`}
-          />
-        </div>
-
-        <div className="shell mt-14">
-          <div className="border border-line bg-paper">
-            <AcrycoreLibrary />
-          </div>
-
-          <Reveal delay={0.15}>
-            <p className="mt-8 text-sm text-ink-dim text-pretty">
-              Screen colour is indicative only. Always confirm a shade against a
-              physical Acrycore™ chip before finalising a specification.
-            </p>
           </Reveal>
         </div>
       </section>
