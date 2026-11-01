@@ -42,7 +42,7 @@ the header, footer, contact page, floating WhatsApp button and enquiry form at o
 ### Alternate URL spellings
 
 Next serves routes case sensitively and only at the exact path, so `/Acrycore` and the
-dropped-A `/crycore` would each 404 on their own. `src/middleware.ts` redirects both,
+dropped-A `/crycore` would each 404 on their own. `src/proxy.ts` redirects both,
 in any casing, to `/acrycore`. Add a line to the `aliases` map there to point another
 misspelling or old URL at a live page. Keys are lowercase and matched against the
 lowercased request, so one entry covers every capitalisation of it.
@@ -93,9 +93,14 @@ src/
 - **Imagery on a light canvas** takes a caption band, not a full veil: these product
   photographs are high-key, and a paper scrim across the whole image bleaches it. Text
   over a photo sits on a `from-paper from-N%` gradient base instead.
-- **Enquiry form** (`/contact`) has no backend. It composes a structured message and
-  hands it to WhatsApp or the visitor's mail client. Nothing is stored or transmitted
-  by the site itself.
+- **Enquiry form** (`/contact`) composes a structured message and hands it to WhatsApp
+  or the visitor's mail client. Choosing a channel also saves a copy through
+  `src/app/api/enquiry/route.ts` to the `enquiries` table in the `metro-surfaces-website`
+  Supabase project; read them in its Table Editor. The save runs in the background, so
+  if it fails the visitor still gets through. It needs `SUPABASE_URL` and
+  `SUPABASE_PUBLISHABLE_KEY` (see `.env.example`) locally and on Vercel. This project is
+  separate from the operations database on purpose: the website must never hold a key
+  to that data. The publishable key can only insert into `enquiries`.
 - **Motion** respects `prefers-reduced-motion`. Smooth scroll never starts and
   animations collapse to near-instant for visitors who ask for less movement.
 - **TypeScript 7** ships a native compiler without the legacy API Next reads directly,
@@ -105,7 +110,7 @@ src/
 
 Live at https://metro-surfaces-website.vercel.app. Vercel builds every push to `main`.
 
-The site builds to fully static pages, so it works on any host. Update `site.url` in
+Pages build as static, with one server route for saving enquiries. Update `site.url` in
 `src/lib/site.ts` if the domain ever changes. It drives canonical URLs, the sitemap
 and social share cards.
 

@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import { cn } from "@/lib/cn";
 import { products } from "@/lib/products";
 import { contact, whatsappLink } from "@/lib/site";
+
+const PRODUCT_OPTIONS = [...products.map((product) => product.name), "Wood Veneer"];
 
 const PROJECT_TYPES = [
   "Commercial / Office",
@@ -19,9 +22,9 @@ const field =
   "w-full border border-line bg-paper-raised px-4 py-3.5 text-sm text-ink placeholder:text-ink-dim transition-colors duration-300 focus:border-maroon focus:outline-none";
 
 /**
- * No backend required: the form composes a structured enquiry and hands it
- * to WhatsApp or the visitor's mail client. Nothing is transmitted anywhere
- * until the visitor chooses a channel.
+ * The form composes a structured enquiry and hands it to WhatsApp or the
+ * visitor's mail client. Choosing a channel also saves a copy in the
+ * background; the link opens either way, so a failed save loses no enquiry.
  */
 export function EnquiryForm() {
   const [form, setForm] = useState({
@@ -30,6 +33,7 @@ export function EnquiryForm() {
     product: products[0].name,
     projectType: PROJECT_TYPES[0],
     message: "",
+    website: "",
   });
 
   const set = (key: keyof typeof form) => (value: string) =>
@@ -54,6 +58,16 @@ export function EnquiryForm() {
 
   const incomplete = form.name.trim() === "" || form.message.trim() === "";
 
+  // keepalive lets the save finish after the tab loses focus to WhatsApp or mail.
+  const save = (channel: "whatsapp" | "email") => {
+    fetch("/api/enquiry", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...form, channel }),
+    }).catch(() => {});
+  };
+
   return (
     <form
       onSubmit={(event) => event.preventDefault()}
@@ -65,8 +79,23 @@ export function EnquiryForm() {
       </h3>
       <p className="mt-3 text-sm text-ink-dim text-pretty">
         Fill this in and send it straight to our WhatsApp or email, whichever
-        you prefer. Nothing is stored on this website.
+        you prefer. We keep a copy so we can follow up, as set out in our{" "}
+        <Link href="/privacy-policy" className="link-underline text-ink">
+          privacy policy
+        </Link>
+        .
       </p>
+
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={form.website}
+        onChange={(e) => set("website")(e.target.value)}
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         <label className="block">
@@ -99,9 +128,9 @@ export function EnquiryForm() {
             onChange={(e) => set("product")(e.target.value)}
             className={cn(field, "appearance-none")}
           >
-            {products.map((product) => (
-              <option key={product.slug} value={product.name}>
-                {product.name}
+            {PRODUCT_OPTIONS.map((product) => (
+              <option key={product} value={product}>
+                {product}
               </option>
             ))}
           </select>
@@ -138,6 +167,7 @@ export function EnquiryForm() {
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <a
           href={incomplete ? undefined : whatsappHref}
+          onClick={() => save("whatsapp")}
           target="_blank"
           rel="noopener noreferrer"
           aria-disabled={incomplete}
@@ -156,6 +186,7 @@ export function EnquiryForm() {
 
         <a
           href={incomplete ? undefined : mailHref}
+          onClick={() => save("email")}
           aria-disabled={incomplete}
           className={cn(
             "group inline-flex items-center gap-3 border px-7 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-500",
