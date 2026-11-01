@@ -48,6 +48,10 @@ const sections: { title: string; intro?: string; items?: string[]; body?: string
     ],
   },
   {
+    title: "Website Enquiries",
+    body: "When you send an enquiry through our website form, we keep a copy of what you entered (your name, company, product of interest, project type and message) and the channel you chose. It is stored in a database hosted by our service provider, Supabase, in Mumbai, India, so that we can respond and follow up. Your message is also delivered through WhatsApp or email, whichever you choose, and those services handle it under their own privacy policies.",
+  },
+  {
     title: "Data Security",
     body: "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.",
   },
@@ -95,7 +99,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <PageHero
-        eyebrow="Last updated: December 2024"
+        eyebrow="Last updated: November 2026"
         title="Privacy Policy"
         lead="How we handle the information you share with us."
       />
